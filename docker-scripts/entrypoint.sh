@@ -5,18 +5,18 @@
 
 graphql get-schema --project prisma
 
-# yarn deployAndRun
+yarn generate
 
-# if [ $DEBUG = 1 ]; then
+if [ $DEBUG = 1 ]; then
 
   echo "Running in debug mode"
 
   yarn deployAndRun
 
-# else
+else
 
-#   echo "Running in production mode"
+  echo "Running in production mode"
 
-#   yarn start
+  yarn prod
 
-# fi
+fi
