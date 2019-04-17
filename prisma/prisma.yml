@@ -1,7 +1,5 @@
 # Specifies the HTTP endpoint of your Prisma API (deployed to a Prisma Demo server).
 endpoint: http://${env:PRISMA_ENDPOINT}:${env:PRISMA_PORT}/${env:PRISMA_NAME}/${env:PRISMA_STAGE}
-# endpoint: http://prisma:4466/uzual/dev
-# endpoint: http://localhost:4466/uzual/dev
 
 # Defines your models, each model is mapped to the database as a table.
 datamodel: datamodel.prisma
@@ -25,4 +23,4 @@ hooks:
 # If specified, the `secret` must be used to generate a JWT which is attached
 # to the `Authorization` header of HTTP requests made against the Prisma API.
 # Info: https://www.prisma.io/docs/reference/prisma-api/concepts-utee3eiquo#authentication
-# secret: ${env:PRISMA_SECRET}
+secret: ${env:PRISMA_SECRET}
