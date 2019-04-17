@@ -1,0 +1,54 @@
+type Post {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  published: Boolean! @default(value: "false")
+  title: String!
+  content: String!
+  author: User!
+}
+
+type User {
+  id: ID! @unique
+  email: String! @unique
+  password: String!
+  name: String!
+  posts: [Post!]!
+  pushToken: String
+  habits: [Habit!]!
+  moods: [Mood!]!
+  isPro: Boolean! @default(value: "false")
+}
+
+type Habit {
+  id: ID! @unique
+  title: String!
+  description: String
+  starred: Boolean! @default(value: "false")
+  owner: User!
+  habits: [DayHabit!]!
+}
+
+type DayHabit {
+  id: ID! @unique
+  done: Boolean! @default(value: "false")
+  date: String! @unique
+  habit: Habit!
+}
+
+type Mood {
+  id: ID! @unique
+  type: Moods!
+  date: String! @unique
+  owner: User!
+}
+
+enum Moods {
+  Dizzy,
+  Frown,
+  FrownOpen,
+  Meh,
+  Smile,
+  Laugh,
+  GrinHearts
+}
