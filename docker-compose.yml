@@ -20,10 +20,10 @@ services:
     image: jc21/mariadb-aria
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: "!@#$!@#!@#!@$%#!@asdasd!@#!@das51902ASD12ASD:PDFUDjg;;1123123asdas"
+      MYSQL_ROOT_PASSWORD: "09123hjasaSDQWjadASd___sadasm_-123a2saZXqdFAn2112312"
       MYSQL_DATABASE: "nginxproxymanager"
       MYSQL_USER: "nginxproxymanager"
-      MYSQL_PASSWORD: "!@#$!@#!@#!@$%#!@asdasd!@#!@das51902ASD12ASD:PDFUDjg;;1123123asdas"
+      MYSQL_PASSWORD: "09123hjasaSDQWjadASd___sadasm_-123a2saZXqdFAn2112312"
     volumes:
       - ./data/mysql:/var/lib/mysql
   server:
