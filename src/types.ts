@@ -5,7 +5,7 @@ export interface User {
 }
 export interface Mood {
   id: string
-  date: string
+  date: number
 }
 export interface Habit {
   id: string
@@ -16,7 +16,7 @@ export interface Habit {
 export interface DayHabit {
   id: string
   done: boolean
-  date: string
+  date: number
 }
 export interface AuthPayload {
   token: string
