@@ -15,6 +15,6 @@ RUN chmod -R +x ./docker-scripts/
 
 VOLUME [ "/usr/src/app", "/usr/src/app/node_modules" ]
 
-EXPOSE 8080
+EXPOSE 4000
 
 ENTRYPOINT ["sh", "/usr/src/app/docker-scripts/entrypoint.sh" ]

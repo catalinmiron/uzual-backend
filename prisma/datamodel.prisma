@@ -32,14 +32,14 @@ type Habit {
 type DayHabit {
   id: ID! @unique
   done: Boolean! @default(value: "false")
-  date: Number! @unique
+  date: Int! @unique
   habit: Habit!
 }
 
 type Mood {
   id: ID! @unique
   type: Moods!
-  date: Number! @unique
+  date: Int! @unique
   owner: User!
 }
 
