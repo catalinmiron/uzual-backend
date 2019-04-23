@@ -358,449 +358,16 @@ export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export interface MoodUpdateWithoutOwnerDataInput {
   type?: Moods;
-  date?: Int;
+  date?: DateTimeInput;
 }
 
 export type DayHabitWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
-  date?: Int;
 }>;
-
-export interface DayHabitUpdateInput {
-  done?: Boolean;
-  date?: Int;
-  habit?: HabitUpdateOneRequiredWithoutHabitsInput;
-}
-
-export interface UserUpdateOneRequiredWithoutMoodsInput {
-  create?: UserCreateWithoutMoodsInput;
-  update?: UserUpdateWithoutMoodsDataInput;
-  upsert?: UserUpsertWithoutMoodsInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface HabitUpdateOneRequiredWithoutHabitsInput {
-  create?: HabitCreateWithoutHabitsInput;
-  update?: HabitUpdateWithoutHabitsDataInput;
-  upsert?: HabitUpsertWithoutHabitsInput;
-  connect?: HabitWhereUniqueInput;
-}
 
 export interface MoodUpdateManyDataInput {
   type?: Moods;
-  date?: Int;
-}
-
-export interface HabitUpdateWithoutHabitsDataInput {
-  title?: String;
-  description?: String;
-  starred?: Boolean;
-  owner?: UserUpdateOneRequiredWithoutHabitsInput;
-}
-
-export interface DayHabitWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  done?: Boolean;
-  done_not?: Boolean;
-  date?: Int;
-  date_not?: Int;
-  date_in?: Int[] | Int;
-  date_not_in?: Int[] | Int;
-  date_lt?: Int;
-  date_lte?: Int;
-  date_gt?: Int;
-  date_gte?: Int;
-  habit?: HabitWhereInput;
-  AND?: DayHabitWhereInput[] | DayHabitWhereInput;
-  OR?: DayHabitWhereInput[] | DayHabitWhereInput;
-  NOT?: DayHabitWhereInput[] | DayHabitWhereInput;
-}
-
-export interface UserUpdateOneRequiredWithoutHabitsInput {
-  create?: UserCreateWithoutHabitsInput;
-  update?: UserUpdateWithoutHabitsDataInput;
-  upsert?: UserUpsertWithoutHabitsInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface PostWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
-  published?: Boolean;
-  published_not?: Boolean;
-  title?: String;
-  title_not?: String;
-  title_in?: String[] | String;
-  title_not_in?: String[] | String;
-  title_lt?: String;
-  title_lte?: String;
-  title_gt?: String;
-  title_gte?: String;
-  title_contains?: String;
-  title_not_contains?: String;
-  title_starts_with?: String;
-  title_not_starts_with?: String;
-  title_ends_with?: String;
-  title_not_ends_with?: String;
-  content?: String;
-  content_not?: String;
-  content_in?: String[] | String;
-  content_not_in?: String[] | String;
-  content_lt?: String;
-  content_lte?: String;
-  content_gt?: String;
-  content_gte?: String;
-  content_contains?: String;
-  content_not_contains?: String;
-  content_starts_with?: String;
-  content_not_starts_with?: String;
-  content_ends_with?: String;
-  content_not_ends_with?: String;
-  author?: UserWhereInput;
-  AND?: PostWhereInput[] | PostWhereInput;
-  OR?: PostWhereInput[] | PostWhereInput;
-  NOT?: PostWhereInput[] | PostWhereInput;
-}
-
-export interface UserUpdateWithoutHabitsDataInput {
-  email?: String;
-  password?: String;
-  name?: String;
-  posts?: PostUpdateManyWithoutAuthorInput;
-  pushToken?: String;
-  moods?: MoodUpdateManyWithoutOwnerInput;
-  isPro?: Boolean;
-}
-
-export interface PostSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: PostWhereInput;
-  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
-}
-
-export interface PostUpdateManyWithoutAuthorInput {
-  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
-  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  set?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
-  update?:
-    | PostUpdateWithWhereUniqueWithoutAuthorInput[]
-    | PostUpdateWithWhereUniqueWithoutAuthorInput;
-  upsert?:
-    | PostUpsertWithWhereUniqueWithoutAuthorInput[]
-    | PostUpsertWithWhereUniqueWithoutAuthorInput;
-  deleteMany?: PostScalarWhereInput[] | PostScalarWhereInput;
-  updateMany?:
-    | PostUpdateManyWithWhereNestedInput[]
-    | PostUpdateManyWithWhereNestedInput;
-}
-
-export interface HabitSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: HabitWhereInput;
-  AND?: HabitSubscriptionWhereInput[] | HabitSubscriptionWhereInput;
-  OR?: HabitSubscriptionWhereInput[] | HabitSubscriptionWhereInput;
-  NOT?: HabitSubscriptionWhereInput[] | HabitSubscriptionWhereInput;
-}
-
-export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput;
-  data: PostUpdateWithoutAuthorDataInput;
-}
-
-export interface UserUpdateManyMutationInput {
-  email?: String;
-  password?: String;
-  name?: String;
-  pushToken?: String;
-  isPro?: Boolean;
-}
-
-export interface PostUpdateWithoutAuthorDataInput {
-  published?: Boolean;
-  title?: String;
-  content?: String;
-}
-
-export interface UserCreateInput {
-  email: String;
-  password: String;
-  name: String;
-  posts?: PostCreateManyWithoutAuthorInput;
-  pushToken?: String;
-  habits?: HabitCreateManyWithoutOwnerInput;
-  moods?: MoodCreateManyWithoutOwnerInput;
-  isPro?: Boolean;
-}
-
-export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
-  where: PostWhereUniqueInput;
-  update: PostUpdateWithoutAuthorDataInput;
-  create: PostCreateWithoutAuthorInput;
-}
-
-export interface UserUpsertWithoutPostsInput {
-  update: UserUpdateWithoutPostsDataInput;
-  create: UserCreateWithoutPostsInput;
-}
-
-export interface PostScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
-  published?: Boolean;
-  published_not?: Boolean;
-  title?: String;
-  title_not?: String;
-  title_in?: String[] | String;
-  title_not_in?: String[] | String;
-  title_lt?: String;
-  title_lte?: String;
-  title_gt?: String;
-  title_gte?: String;
-  title_contains?: String;
-  title_not_contains?: String;
-  title_starts_with?: String;
-  title_not_starts_with?: String;
-  title_ends_with?: String;
-  title_not_ends_with?: String;
-  content?: String;
-  content_not?: String;
-  content_in?: String[] | String;
-  content_not_in?: String[] | String;
-  content_lt?: String;
-  content_lte?: String;
-  content_gt?: String;
-  content_gte?: String;
-  content_contains?: String;
-  content_not_contains?: String;
-  content_starts_with?: String;
-  content_not_starts_with?: String;
-  content_ends_with?: String;
-  content_not_ends_with?: String;
-  AND?: PostScalarWhereInput[] | PostScalarWhereInput;
-  OR?: PostScalarWhereInput[] | PostScalarWhereInput;
-  NOT?: PostScalarWhereInput[] | PostScalarWhereInput;
-}
-
-export interface UserUpdateWithoutPostsDataInput {
-  email?: String;
-  password?: String;
-  name?: String;
-  pushToken?: String;
-  habits?: HabitUpdateManyWithoutOwnerInput;
-  moods?: MoodUpdateManyWithoutOwnerInput;
-  isPro?: Boolean;
-}
-
-export interface PostUpdateManyWithWhereNestedInput {
-  where: PostScalarWhereInput;
-  data: PostUpdateManyDataInput;
-}
-
-export interface PostUpdateInput {
-  published?: Boolean;
-  title?: String;
-  content?: String;
-  author?: UserUpdateOneRequiredWithoutPostsInput;
-}
-
-export interface PostUpdateManyDataInput {
-  published?: Boolean;
-  title?: String;
-  content?: String;
-}
-
-export interface UserCreateWithoutPostsInput {
-  email: String;
-  password: String;
-  name: String;
-  pushToken?: String;
-  habits?: HabitCreateManyWithoutOwnerInput;
-  moods?: MoodCreateManyWithoutOwnerInput;
-  isPro?: Boolean;
-}
-
-export interface MoodUpdateManyWithoutOwnerInput {
-  create?: MoodCreateWithoutOwnerInput[] | MoodCreateWithoutOwnerInput;
-  delete?: MoodWhereUniqueInput[] | MoodWhereUniqueInput;
-  connect?: MoodWhereUniqueInput[] | MoodWhereUniqueInput;
-  set?: MoodWhereUniqueInput[] | MoodWhereUniqueInput;
-  disconnect?: MoodWhereUniqueInput[] | MoodWhereUniqueInput;
-  update?:
-    | MoodUpdateWithWhereUniqueWithoutOwnerInput[]
-    | MoodUpdateWithWhereUniqueWithoutOwnerInput;
-  upsert?:
-    | MoodUpsertWithWhereUniqueWithoutOwnerInput[]
-    | MoodUpsertWithWhereUniqueWithoutOwnerInput;
-  deleteMany?: MoodScalarWhereInput[] | MoodScalarWhereInput;
-  updateMany?:
-    | MoodUpdateManyWithWhereNestedInput[]
-    | MoodUpdateManyWithWhereNestedInput;
-}
-
-export interface PostCreateInput {
-  published?: Boolean;
-  title: String;
-  content: String;
-  author: UserCreateOneWithoutPostsInput;
-}
-
-export interface MoodUpdateWithWhereUniqueWithoutOwnerInput {
-  where: MoodWhereUniqueInput;
-  data: MoodUpdateWithoutOwnerDataInput;
-}
-
-export interface MoodUpdateManyMutationInput {
-  type?: Moods;
-  date?: Int;
-}
-
-export interface HabitUpdateWithWhereUniqueWithoutOwnerInput {
-  where: HabitWhereUniqueInput;
-  data: HabitUpdateWithoutOwnerDataInput;
-}
-
-export interface HabitUpdateManyDataInput {
-  title?: String;
-  description?: String;
-  starred?: Boolean;
-}
-
-export interface MoodUpsertWithWhereUniqueWithoutOwnerInput {
-  where: MoodWhereUniqueInput;
-  update: MoodUpdateWithoutOwnerDataInput;
-  create: MoodCreateWithoutOwnerInput;
-}
-
-export interface HabitUpdateManyWithWhereNestedInput {
-  where: HabitScalarWhereInput;
-  data: HabitUpdateManyDataInput;
-}
-
-export interface MoodScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  type?: Moods;
-  type_not?: Moods;
-  type_in?: Moods[] | Moods;
-  type_not_in?: Moods[] | Moods;
-  date?: Int;
-  date_not?: Int;
-  date_in?: Int[] | Int;
-  date_not_in?: Int[] | Int;
-  date_lt?: Int;
-  date_lte?: Int;
-  date_gt?: Int;
-  date_gte?: Int;
-  AND?: MoodScalarWhereInput[] | MoodScalarWhereInput;
-  OR?: MoodScalarWhereInput[] | MoodScalarWhereInput;
-  NOT?: MoodScalarWhereInput[] | MoodScalarWhereInput;
-}
-
-export interface HabitUpsertWithWhereUniqueWithoutOwnerInput {
-  where: HabitWhereUniqueInput;
-  update: HabitUpdateWithoutOwnerDataInput;
-  create: HabitCreateWithoutOwnerInput;
-}
-
-export interface MoodUpdateManyWithWhereNestedInput {
-  where: MoodScalarWhereInput;
-  data: MoodUpdateManyDataInput;
-}
-
-export interface HabitCreateOneWithoutHabitsInput {
-  create?: HabitCreateWithoutHabitsInput;
-  connect?: HabitWhereUniqueInput;
+  date?: DateTimeInput;
 }
 
 export interface UserWhereInput {
@@ -890,19 +457,40 @@ export interface UserWhereInput {
   NOT?: UserWhereInput[] | UserWhereInput;
 }
 
-export interface UserCreateOneWithoutHabitsInput {
-  create?: UserCreateWithoutHabitsInput;
-  connect?: UserWhereUniqueInput;
-}
-
 export interface UserUpsertWithoutHabitsInput {
   update: UserUpdateWithoutHabitsDataInput;
   create: UserCreateWithoutHabitsInput;
 }
 
-export interface PostCreateManyWithoutAuthorInput {
-  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
-  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+export interface DayHabitWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  done?: Boolean;
+  done_not?: Boolean;
+  date?: DateTimeInput;
+  date_not?: DateTimeInput;
+  date_in?: DateTimeInput[] | DateTimeInput;
+  date_not_in?: DateTimeInput[] | DateTimeInput;
+  date_lt?: DateTimeInput;
+  date_lte?: DateTimeInput;
+  date_gt?: DateTimeInput;
+  date_gte?: DateTimeInput;
+  habit?: HabitWhereInput;
+  AND?: DayHabitWhereInput[] | DayHabitWhereInput;
+  OR?: DayHabitWhereInput[] | DayHabitWhereInput;
+  NOT?: DayHabitWhereInput[] | DayHabitWhereInput;
 }
 
 export interface HabitUpsertWithoutHabitsInput {
@@ -910,14 +498,383 @@ export interface HabitUpsertWithoutHabitsInput {
   create: HabitCreateWithoutHabitsInput;
 }
 
-export interface MoodCreateManyWithoutOwnerInput {
-  create?: MoodCreateWithoutOwnerInput[] | MoodCreateWithoutOwnerInput;
-  connect?: MoodWhereUniqueInput[] | MoodWhereUniqueInput;
+export interface PostWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  published?: Boolean;
+  published_not?: Boolean;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  content?: String;
+  content_not?: String;
+  content_in?: String[] | String;
+  content_not_in?: String[] | String;
+  content_lt?: String;
+  content_lte?: String;
+  content_gt?: String;
+  content_gte?: String;
+  content_contains?: String;
+  content_not_contains?: String;
+  content_starts_with?: String;
+  content_not_starts_with?: String;
+  content_ends_with?: String;
+  content_not_ends_with?: String;
+  author?: UserWhereInput;
+  AND?: PostWhereInput[] | PostWhereInput;
+  OR?: PostWhereInput[] | PostWhereInput;
+  NOT?: PostWhereInput[] | PostWhereInput;
+}
+
+export interface UserUpdateOneRequiredWithoutHabitsInput {
+  create?: UserCreateWithoutHabitsInput;
+  update?: UserUpdateWithoutHabitsDataInput;
+  upsert?: UserUpsertWithoutHabitsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface UserUpdateOneRequiredWithoutMoodsInput {
+  create?: UserCreateWithoutMoodsInput;
+  update?: UserUpdateWithoutMoodsDataInput;
+  upsert?: UserUpsertWithoutMoodsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface UserUpdateWithoutHabitsDataInput {
+  email?: String;
+  password?: String;
+  name?: String;
+  posts?: PostUpdateManyWithoutAuthorInput;
+  pushToken?: String;
+  moods?: MoodUpdateManyWithoutOwnerInput;
+  isPro?: Boolean;
 }
 
 export interface DayHabitUpdateManyMutationInput {
   done?: Boolean;
-  date?: Int;
+  date?: DateTimeInput;
+}
+
+export interface PostUpdateManyWithoutAuthorInput {
+  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
+  delete?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  set?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  disconnect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+  update?:
+    | PostUpdateWithWhereUniqueWithoutAuthorInput[]
+    | PostUpdateWithWhereUniqueWithoutAuthorInput;
+  upsert?:
+    | PostUpsertWithWhereUniqueWithoutAuthorInput[]
+    | PostUpsertWithWhereUniqueWithoutAuthorInput;
+  deleteMany?: PostScalarWhereInput[] | PostScalarWhereInput;
+  updateMany?:
+    | PostUpdateManyWithWhereNestedInput[]
+    | PostUpdateManyWithWhereNestedInput;
+}
+
+export interface PostSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: PostWhereInput;
+  AND?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+  OR?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+  NOT?: PostSubscriptionWhereInput[] | PostSubscriptionWhereInput;
+}
+
+export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
+  where: PostWhereUniqueInput;
+  data: PostUpdateWithoutAuthorDataInput;
+}
+
+export interface HabitSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: HabitWhereInput;
+  AND?: HabitSubscriptionWhereInput[] | HabitSubscriptionWhereInput;
+  OR?: HabitSubscriptionWhereInput[] | HabitSubscriptionWhereInput;
+  NOT?: HabitSubscriptionWhereInput[] | HabitSubscriptionWhereInput;
+}
+
+export interface PostUpdateWithoutAuthorDataInput {
+  published?: Boolean;
+  title?: String;
+  content?: String;
+}
+
+export interface UserUpdateManyMutationInput {
+  email?: String;
+  password?: String;
+  name?: String;
+  pushToken?: String;
+  isPro?: Boolean;
+}
+
+export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
+  where: PostWhereUniqueInput;
+  update: PostUpdateWithoutAuthorDataInput;
+  create: PostCreateWithoutAuthorInput;
+}
+
+export interface UserCreateInput {
+  email: String;
+  password: String;
+  name: String;
+  posts?: PostCreateManyWithoutAuthorInput;
+  pushToken?: String;
+  habits?: HabitCreateManyWithoutOwnerInput;
+  moods?: MoodCreateManyWithoutOwnerInput;
+  isPro?: Boolean;
+}
+
+export interface PostScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  published?: Boolean;
+  published_not?: Boolean;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
+  content?: String;
+  content_not?: String;
+  content_in?: String[] | String;
+  content_not_in?: String[] | String;
+  content_lt?: String;
+  content_lte?: String;
+  content_gt?: String;
+  content_gte?: String;
+  content_contains?: String;
+  content_not_contains?: String;
+  content_starts_with?: String;
+  content_not_starts_with?: String;
+  content_ends_with?: String;
+  content_not_ends_with?: String;
+  AND?: PostScalarWhereInput[] | PostScalarWhereInput;
+  OR?: PostScalarWhereInput[] | PostScalarWhereInput;
+  NOT?: PostScalarWhereInput[] | PostScalarWhereInput;
+}
+
+export interface PostUpdateManyMutationInput {
+  published?: Boolean;
+  title?: String;
+  content?: String;
+}
+
+export interface PostUpdateManyWithWhereNestedInput {
+  where: PostScalarWhereInput;
+  data: PostUpdateManyDataInput;
+}
+
+export interface UserUpdateWithoutPostsDataInput {
+  email?: String;
+  password?: String;
+  name?: String;
+  pushToken?: String;
+  habits?: HabitUpdateManyWithoutOwnerInput;
+  moods?: MoodUpdateManyWithoutOwnerInput;
+  isPro?: Boolean;
+}
+
+export interface PostUpdateManyDataInput {
+  published?: Boolean;
+  title?: String;
+  content?: String;
+}
+
+export interface UserUpdateOneRequiredWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput;
+  update?: UserUpdateWithoutPostsDataInput;
+  upsert?: UserUpsertWithoutPostsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface MoodUpdateManyWithoutOwnerInput {
+  create?: MoodCreateWithoutOwnerInput[] | MoodCreateWithoutOwnerInput;
+  delete?: MoodWhereUniqueInput[] | MoodWhereUniqueInput;
+  connect?: MoodWhereUniqueInput[] | MoodWhereUniqueInput;
+  set?: MoodWhereUniqueInput[] | MoodWhereUniqueInput;
+  disconnect?: MoodWhereUniqueInput[] | MoodWhereUniqueInput;
+  update?:
+    | MoodUpdateWithWhereUniqueWithoutOwnerInput[]
+    | MoodUpdateWithWhereUniqueWithoutOwnerInput;
+  upsert?:
+    | MoodUpsertWithWhereUniqueWithoutOwnerInput[]
+    | MoodUpsertWithWhereUniqueWithoutOwnerInput;
+  deleteMany?: MoodScalarWhereInput[] | MoodScalarWhereInput;
+  updateMany?:
+    | MoodUpdateManyWithWhereNestedInput[]
+    | MoodUpdateManyWithWhereNestedInput;
+}
+
+export interface UserCreateWithoutPostsInput {
+  email: String;
+  password: String;
+  name: String;
+  pushToken?: String;
+  habits?: HabitCreateManyWithoutOwnerInput;
+  moods?: MoodCreateManyWithoutOwnerInput;
+  isPro?: Boolean;
+}
+
+export interface MoodUpdateWithWhereUniqueWithoutOwnerInput {
+  where: MoodWhereUniqueInput;
+  data: MoodUpdateWithoutOwnerDataInput;
+}
+
+export interface UserCreateOneWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface HabitUpsertWithWhereUniqueWithoutOwnerInput {
+  where: HabitWhereUniqueInput;
+  update: HabitUpdateWithoutOwnerDataInput;
+  create: HabitCreateWithoutOwnerInput;
+}
+
+export interface MoodUpdateManyMutationInput {
+  type?: Moods;
+  date?: DateTimeInput;
+}
+
+export interface MoodUpsertWithWhereUniqueWithoutOwnerInput {
+  where: MoodWhereUniqueInput;
+  update: MoodUpdateWithoutOwnerDataInput;
+  create: MoodCreateWithoutOwnerInput;
+}
+
+export interface UserUpsertWithoutMoodsInput {
+  update: UserUpdateWithoutMoodsDataInput;
+  create: UserCreateWithoutMoodsInput;
+}
+
+export interface MoodScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  type?: Moods;
+  type_not?: Moods;
+  type_in?: Moods[] | Moods;
+  type_not_in?: Moods[] | Moods;
+  date?: DateTimeInput;
+  date_not?: DateTimeInput;
+  date_in?: DateTimeInput[] | DateTimeInput;
+  date_not_in?: DateTimeInput[] | DateTimeInput;
+  date_lt?: DateTimeInput;
+  date_lte?: DateTimeInput;
+  date_gt?: DateTimeInput;
+  date_gte?: DateTimeInput;
+  AND?: MoodScalarWhereInput[] | MoodScalarWhereInput;
+  OR?: MoodScalarWhereInput[] | MoodScalarWhereInput;
+  NOT?: MoodScalarWhereInput[] | MoodScalarWhereInput;
+}
+
+export interface HabitUpdateManyWithWhereNestedInput {
+  where: HabitScalarWhereInput;
+  data: HabitUpdateManyDataInput;
+}
+
+export interface MoodUpdateManyWithWhereNestedInput {
+  where: MoodScalarWhereInput;
+  data: MoodUpdateManyDataInput;
+}
+
+export interface HabitCreateOneWithoutHabitsInput {
+  create?: HabitCreateWithoutHabitsInput;
+  connect?: HabitWhereUniqueInput;
 }
 
 export interface HabitWhereInput {
@@ -974,6 +931,72 @@ export interface HabitWhereInput {
   NOT?: HabitWhereInput[] | HabitWhereInput;
 }
 
+export interface UserCreateOneWithoutHabitsInput {
+  create?: UserCreateWithoutHabitsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface MoodWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  type?: Moods;
+  type_not?: Moods;
+  type_in?: Moods[] | Moods;
+  type_not_in?: Moods[] | Moods;
+  date?: DateTimeInput;
+  date_not?: DateTimeInput;
+  date_in?: DateTimeInput[] | DateTimeInput;
+  date_not_in?: DateTimeInput[] | DateTimeInput;
+  date_lt?: DateTimeInput;
+  date_lte?: DateTimeInput;
+  date_gt?: DateTimeInput;
+  date_gte?: DateTimeInput;
+  owner?: UserWhereInput;
+  AND?: MoodWhereInput[] | MoodWhereInput;
+  OR?: MoodWhereInput[] | MoodWhereInput;
+  NOT?: MoodWhereInput[] | MoodWhereInput;
+}
+
+export interface PostCreateManyWithoutAuthorInput {
+  create?: PostCreateWithoutAuthorInput[] | PostCreateWithoutAuthorInput;
+  connect?: PostWhereUniqueInput[] | PostWhereUniqueInput;
+}
+
+export interface HabitUpdateWithoutOwnerDataInput {
+  title?: String;
+  description?: String;
+  starred?: Boolean;
+  habits?: DayHabitUpdateManyWithoutHabitInput;
+}
+
+export interface MoodCreateManyWithoutOwnerInput {
+  create?: MoodCreateWithoutOwnerInput[] | MoodCreateWithoutOwnerInput;
+  connect?: MoodWhereUniqueInput[] | MoodWhereUniqueInput;
+}
+
+export interface HabitUpdateWithWhereUniqueWithoutOwnerInput {
+  where: HabitWhereUniqueInput;
+  data: HabitUpdateWithoutOwnerDataInput;
+}
+
+export interface DayHabitUpdateInput {
+  done?: Boolean;
+  date?: DateTimeInput;
+  habit?: HabitUpdateOneRequiredWithoutHabitsInput;
+}
+
 export interface HabitUpdateManyWithoutOwnerInput {
   create?: HabitCreateWithoutOwnerInput[] | HabitCreateWithoutOwnerInput;
   delete?: HabitWhereUniqueInput[] | HabitWhereUniqueInput;
@@ -992,15 +1015,11 @@ export interface HabitUpdateManyWithoutOwnerInput {
     | HabitUpdateManyWithWhereNestedInput;
 }
 
-export interface UserSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+export interface HabitUpdateWithoutHabitsDataInput {
+  title?: String;
+  description?: String;
+  starred?: Boolean;
+  owner?: UserUpdateOneRequiredWithoutHabitsInput;
 }
 
 export interface UserUpdateWithoutMoodsDataInput {
@@ -1013,15 +1032,15 @@ export interface UserUpdateWithoutMoodsDataInput {
   isPro?: Boolean;
 }
 
-export interface DayHabitSubscriptionWhereInput {
+export interface MoodSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: DayHabitWhereInput;
-  AND?: DayHabitSubscriptionWhereInput[] | DayHabitSubscriptionWhereInput;
-  OR?: DayHabitSubscriptionWhereInput[] | DayHabitSubscriptionWhereInput;
-  NOT?: DayHabitSubscriptionWhereInput[] | DayHabitSubscriptionWhereInput;
+  node?: MoodWhereInput;
+  AND?: MoodSubscriptionWhereInput[] | MoodSubscriptionWhereInput;
+  OR?: MoodSubscriptionWhereInput[] | MoodSubscriptionWhereInput;
+  NOT?: MoodSubscriptionWhereInput[] | MoodSubscriptionWhereInput;
 }
 
 export interface HabitCreateInput {
@@ -1032,10 +1051,15 @@ export interface HabitCreateInput {
   habits?: DayHabitCreateManyWithoutHabitInput;
 }
 
-export interface PostUpdateManyMutationInput {
-  published?: Boolean;
-  title?: String;
-  content?: String;
+export interface UserUpdateInput {
+  email?: String;
+  password?: String;
+  name?: String;
+  posts?: PostUpdateManyWithoutAuthorInput;
+  pushToken?: String;
+  habits?: HabitUpdateManyWithoutOwnerInput;
+  moods?: MoodUpdateManyWithoutOwnerInput;
+  isPro?: Boolean;
 }
 
 export interface DayHabitCreateManyWithoutHabitInput {
@@ -1043,21 +1067,21 @@ export interface DayHabitCreateManyWithoutHabitInput {
   connect?: DayHabitWhereUniqueInput[] | DayHabitWhereUniqueInput;
 }
 
-export interface UserUpdateOneRequiredWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput;
-  update?: UserUpdateWithoutPostsDataInput;
-  upsert?: UserUpsertWithoutPostsInput;
-  connect?: UserWhereUniqueInput;
+export interface UserUpsertWithoutPostsInput {
+  update: UserUpdateWithoutPostsDataInput;
+  create: UserCreateWithoutPostsInput;
 }
 
 export interface DayHabitCreateWithoutHabitInput {
   done?: Boolean;
-  date: Int;
+  date: DateTimeInput;
 }
 
-export interface UserCreateOneWithoutPostsInput {
-  create?: UserCreateWithoutPostsInput;
-  connect?: UserWhereUniqueInput;
+export interface PostUpdateInput {
+  published?: Boolean;
+  title?: String;
+  content?: String;
+  author?: UserUpdateOneRequiredWithoutPostsInput;
 }
 
 export interface HabitUpdateInput {
@@ -1068,9 +1092,11 @@ export interface HabitUpdateInput {
   habits?: DayHabitUpdateManyWithoutHabitInput;
 }
 
-export interface UserUpsertWithoutMoodsInput {
-  update: UserUpdateWithoutMoodsDataInput;
-  create: UserCreateWithoutMoodsInput;
+export interface PostCreateInput {
+  published?: Boolean;
+  title: String;
+  content: String;
+  author: UserCreateOneWithoutPostsInput;
 }
 
 export interface DayHabitUpdateManyWithoutHabitInput {
@@ -1089,6 +1115,114 @@ export interface DayHabitUpdateManyWithoutHabitInput {
   updateMany?:
     | DayHabitUpdateManyWithWhereNestedInput[]
     | DayHabitUpdateManyWithWhereNestedInput;
+}
+
+export interface HabitUpdateManyDataInput {
+  title?: String;
+  description?: String;
+  starred?: Boolean;
+}
+
+export interface DayHabitUpdateWithWhereUniqueWithoutHabitInput {
+  where: DayHabitWhereUniqueInput;
+  data: DayHabitUpdateWithoutHabitDataInput;
+}
+
+export interface DayHabitCreateInput {
+  done?: Boolean;
+  date: DateTimeInput;
+  habit: HabitCreateOneWithoutHabitsInput;
+}
+
+export interface DayHabitUpdateWithoutHabitDataInput {
+  done?: Boolean;
+  date?: DateTimeInput;
+}
+
+export interface UserCreateWithoutHabitsInput {
+  email: String;
+  password: String;
+  name: String;
+  posts?: PostCreateManyWithoutAuthorInput;
+  pushToken?: String;
+  moods?: MoodCreateManyWithoutOwnerInput;
+  isPro?: Boolean;
+}
+
+export interface DayHabitUpsertWithWhereUniqueWithoutHabitInput {
+  where: DayHabitWhereUniqueInput;
+  update: DayHabitUpdateWithoutHabitDataInput;
+  create: DayHabitCreateWithoutHabitInput;
+}
+
+export interface MoodCreateWithoutOwnerInput {
+  type: Moods;
+  date: DateTimeInput;
+}
+
+export interface DayHabitScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  done?: Boolean;
+  done_not?: Boolean;
+  date?: DateTimeInput;
+  date_not?: DateTimeInput;
+  date_in?: DateTimeInput[] | DateTimeInput;
+  date_not_in?: DateTimeInput[] | DateTimeInput;
+  date_lt?: DateTimeInput;
+  date_lte?: DateTimeInput;
+  date_gt?: DateTimeInput;
+  date_gte?: DateTimeInput;
+  AND?: DayHabitScalarWhereInput[] | DayHabitScalarWhereInput;
+  OR?: DayHabitScalarWhereInput[] | DayHabitScalarWhereInput;
+  NOT?: DayHabitScalarWhereInput[] | DayHabitScalarWhereInput;
+}
+
+export interface UserSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: UserWhereInput;
+  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+}
+
+export interface DayHabitUpdateManyWithWhereNestedInput {
+  where: DayHabitScalarWhereInput;
+  data: DayHabitUpdateManyDataInput;
+}
+
+export type HabitWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface DayHabitUpdateManyDataInput {
+  done?: Boolean;
+  date?: DateTimeInput;
+}
+
+export type PostWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export interface HabitUpdateManyMutationInput {
+  title?: String;
+  description?: String;
+  starred?: Boolean;
 }
 
 export interface HabitScalarWhereInput {
@@ -1141,118 +1275,9 @@ export interface HabitScalarWhereInput {
   NOT?: HabitScalarWhereInput[] | HabitScalarWhereInput;
 }
 
-export interface DayHabitUpdateWithWhereUniqueWithoutHabitInput {
-  where: DayHabitWhereUniqueInput;
-  data: DayHabitUpdateWithoutHabitDataInput;
-}
-
-export interface DayHabitCreateInput {
-  done?: Boolean;
-  date: Int;
-  habit: HabitCreateOneWithoutHabitsInput;
-}
-
-export interface DayHabitUpdateWithoutHabitDataInput {
-  done?: Boolean;
-  date?: Int;
-}
-
-export interface UserCreateWithoutHabitsInput {
-  email: String;
-  password: String;
-  name: String;
-  posts?: PostCreateManyWithoutAuthorInput;
-  pushToken?: String;
-  moods?: MoodCreateManyWithoutOwnerInput;
-  isPro?: Boolean;
-}
-
-export interface DayHabitUpsertWithWhereUniqueWithoutHabitInput {
-  where: DayHabitWhereUniqueInput;
-  update: DayHabitUpdateWithoutHabitDataInput;
-  create: DayHabitCreateWithoutHabitInput;
-}
-
-export interface MoodCreateWithoutOwnerInput {
-  type: Moods;
-  date: Int;
-}
-
-export interface DayHabitScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  done?: Boolean;
-  done_not?: Boolean;
-  date?: Int;
-  date_not?: Int;
-  date_in?: Int[] | Int;
-  date_not_in?: Int[] | Int;
-  date_lt?: Int;
-  date_lte?: Int;
-  date_gt?: Int;
-  date_gte?: Int;
-  AND?: DayHabitScalarWhereInput[] | DayHabitScalarWhereInput;
-  OR?: DayHabitScalarWhereInput[] | DayHabitScalarWhereInput;
-  NOT?: DayHabitScalarWhereInput[] | DayHabitScalarWhereInput;
-}
-
-export interface MoodSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: MoodWhereInput;
-  AND?: MoodSubscriptionWhereInput[] | MoodSubscriptionWhereInput;
-  OR?: MoodSubscriptionWhereInput[] | MoodSubscriptionWhereInput;
-  NOT?: MoodSubscriptionWhereInput[] | MoodSubscriptionWhereInput;
-}
-
-export interface DayHabitUpdateManyWithWhereNestedInput {
-  where: DayHabitScalarWhereInput;
-  data: DayHabitUpdateManyDataInput;
-}
-
-export type HabitWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface DayHabitUpdateManyDataInput {
-  done?: Boolean;
-  date?: Int;
-}
-
-export type PostWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface HabitUpdateManyMutationInput {
-  title?: String;
-  description?: String;
-  starred?: Boolean;
-}
-
-export interface HabitUpdateWithoutOwnerDataInput {
-  title?: String;
-  description?: String;
-  starred?: Boolean;
-  habits?: DayHabitUpdateManyWithoutHabitInput;
-}
-
 export interface MoodCreateInput {
   type: Moods;
-  date: Int;
+  date: DateTimeInput;
   owner: UserCreateOneWithoutMoodsInput;
 }
 
@@ -1267,20 +1292,20 @@ export interface UserCreateOneWithoutMoodsInput {
   connect?: UserWhereUniqueInput;
 }
 
-export interface UserUpdateInput {
-  email?: String;
-  password?: String;
-  name?: String;
-  posts?: PostUpdateManyWithoutAuthorInput;
-  pushToken?: String;
-  habits?: HabitUpdateManyWithoutOwnerInput;
-  moods?: MoodUpdateManyWithoutOwnerInput;
-  isPro?: Boolean;
+export interface DayHabitSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: DayHabitWhereInput;
+  AND?: DayHabitSubscriptionWhereInput[] | DayHabitSubscriptionWhereInput;
+  OR?: DayHabitSubscriptionWhereInput[] | DayHabitSubscriptionWhereInput;
+  NOT?: DayHabitSubscriptionWhereInput[] | DayHabitSubscriptionWhereInput;
 }
 
 export interface MoodUpdateInput {
   type?: Moods;
-  date?: Int;
+  date?: DateTimeInput;
   owner?: UserUpdateOneRequiredWithoutMoodsInput;
 }
 
@@ -1308,40 +1333,13 @@ export interface UserCreateWithoutMoodsInput {
 
 export type MoodWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
-  date?: Int;
 }>;
 
-export interface MoodWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  type?: Moods;
-  type_not?: Moods;
-  type_in?: Moods[] | Moods;
-  type_not_in?: Moods[] | Moods;
-  date?: Int;
-  date_not?: Int;
-  date_in?: Int[] | Int;
-  date_not_in?: Int[] | Int;
-  date_lt?: Int;
-  date_lte?: Int;
-  date_gt?: Int;
-  date_gte?: Int;
-  owner?: UserWhereInput;
-  AND?: MoodWhereInput[] | MoodWhereInput;
-  OR?: MoodWhereInput[] | MoodWhereInput;
-  NOT?: MoodWhereInput[] | MoodWhereInput;
+export interface HabitUpdateOneRequiredWithoutHabitsInput {
+  create?: HabitCreateWithoutHabitsInput;
+  update?: HabitUpdateWithoutHabitsDataInput;
+  upsert?: HabitUpsertWithoutHabitsInput;
+  connect?: HabitWhereUniqueInput;
 }
 
 export interface HabitCreateWithoutHabitsInput {
@@ -1391,6 +1389,91 @@ export interface UserPreviousValuesSubscription
   isPro: () => Promise<AsyncIterator<Boolean>>;
 }
 
+export interface HabitEdge {
+  node: Habit;
+  cursor: String;
+}
+
+export interface HabitEdgePromise extends Promise<HabitEdge>, Fragmentable {
+  node: <T = HabitPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface HabitEdgeSubscription
+  extends Promise<AsyncIterator<HabitEdge>>,
+    Fragmentable {
+  node: <T = HabitSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Habit {
+  id: ID_Output;
+  title: String;
+  description?: String;
+  starred: Boolean;
+}
+
+export interface HabitPromise extends Promise<Habit>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  description: () => Promise<String>;
+  starred: () => Promise<Boolean>;
+  owner: <T = UserPromise>() => T;
+  habits: <T = FragmentableArray<DayHabit>>(
+    args?: {
+      where?: DayHabitWhereInput;
+      orderBy?: DayHabitOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface HabitSubscription
+  extends Promise<AsyncIterator<Habit>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  starred: () => Promise<AsyncIterator<Boolean>>;
+  owner: <T = UserSubscription>() => T;
+  habits: <T = Promise<AsyncIterator<DayHabitSubscription>>>(
+    args?: {
+      where?: DayHabitWhereInput;
+      orderBy?: DayHabitOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+}
+
+export interface HabitConnection {
+  pageInfo: PageInfo;
+  edges: HabitEdge[];
+}
+
+export interface HabitConnectionPromise
+  extends Promise<HabitConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<HabitEdge>>() => T;
+  aggregate: <T = AggregateHabitPromise>() => T;
+}
+
+export interface HabitConnectionSubscription
+  extends Promise<AsyncIterator<HabitConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<HabitEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateHabitSubscription>() => T;
+}
+
 export interface AggregateDayHabit {
   count: Int;
 }
@@ -1407,79 +1490,6 @@ export interface AggregateDayHabitSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface Post {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  published: Boolean;
-  title: String;
-  content: String;
-}
-
-export interface PostPromise extends Promise<Post>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  published: () => Promise<Boolean>;
-  title: () => Promise<String>;
-  content: () => Promise<String>;
-  author: <T = UserPromise>() => T;
-}
-
-export interface PostSubscription
-  extends Promise<AsyncIterator<Post>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  published: () => Promise<AsyncIterator<Boolean>>;
-  title: () => Promise<AsyncIterator<String>>;
-  content: () => Promise<AsyncIterator<String>>;
-  author: <T = UserSubscription>() => T;
-}
-
-export interface DayHabitEdge {
-  node: DayHabit;
-  cursor: String;
-}
-
-export interface DayHabitEdgePromise
-  extends Promise<DayHabitEdge>,
-    Fragmentable {
-  node: <T = DayHabitPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface DayHabitEdgeSubscription
-  extends Promise<AsyncIterator<DayHabitEdge>>,
-    Fragmentable {
-  node: <T = DayHabitSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
 export interface BatchPayload {
   count: Long;
 }
@@ -1494,64 +1504,6 @@ export interface BatchPayloadSubscription
   extends Promise<AsyncIterator<BatchPayload>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface AggregateUser {
-  count: Int;
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface DayHabitConnection {
-  pageInfo: PageInfo;
-  edges: DayHabitEdge[];
-}
-
-export interface DayHabitConnectionPromise
-  extends Promise<DayHabitConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<DayHabitEdge>>() => T;
-  aggregate: <T = AggregateDayHabitPromise>() => T;
-}
-
-export interface DayHabitConnectionSubscription
-  extends Promise<AsyncIterator<DayHabitConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<DayHabitEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateDayHabitSubscription>() => T;
-}
-
-export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
-}
-
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
-}
-
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
 }
 
 export interface User {
@@ -1649,6 +1601,106 @@ export interface UserSubscription
   isPro: () => Promise<AsyncIterator<Boolean>>;
 }
 
+export interface DayHabitEdge {
+  node: DayHabit;
+  cursor: String;
+}
+
+export interface DayHabitEdgePromise
+  extends Promise<DayHabitEdge>,
+    Fragmentable {
+  node: <T = DayHabitPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface DayHabitEdgeSubscription
+  extends Promise<AsyncIterator<DayHabitEdge>>,
+    Fragmentable {
+  node: <T = DayHabitSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateUser {
+  count: Int;
+}
+
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
+}
+
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface DayHabitConnection {
+  pageInfo: PageInfo;
+  edges: DayHabitEdge[];
+}
+
+export interface DayHabitConnectionPromise
+  extends Promise<DayHabitConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<DayHabitEdge>>() => T;
+  aggregate: <T = AggregateDayHabitPromise>() => T;
+}
+
+export interface DayHabitConnectionSubscription
+  extends Promise<AsyncIterator<DayHabitConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<DayHabitEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateDayHabitSubscription>() => T;
+}
+
 export interface AggregatePost {
   count: Int;
 }
@@ -1665,26 +1717,26 @@ export interface AggregatePostSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface Mood {
+export interface DayHabit {
   id: ID_Output;
-  type: Moods;
-  date: Int;
+  done: Boolean;
+  date: DateTimeOutput;
 }
 
-export interface MoodPromise extends Promise<Mood>, Fragmentable {
+export interface DayHabitPromise extends Promise<DayHabit>, Fragmentable {
   id: () => Promise<ID_Output>;
-  type: () => Promise<Moods>;
-  date: () => Promise<Int>;
-  owner: <T = UserPromise>() => T;
+  done: () => Promise<Boolean>;
+  date: () => Promise<DateTimeOutput>;
+  habit: <T = HabitPromise>() => T;
 }
 
-export interface MoodSubscription
-  extends Promise<AsyncIterator<Mood>>,
+export interface DayHabitSubscription
+  extends Promise<AsyncIterator<DayHabit>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  type: () => Promise<AsyncIterator<Moods>>;
-  date: () => Promise<AsyncIterator<Int>>;
-  owner: <T = UserSubscription>() => T;
+  done: () => Promise<AsyncIterator<Boolean>>;
+  date: () => Promise<AsyncIterator<DateTimeOutput>>;
+  habit: <T = HabitSubscription>() => T;
 }
 
 export interface PostConnection {
@@ -1706,6 +1758,161 @@ export interface PostConnectionSubscription
   pageInfo: <T = PageInfoSubscription>() => T;
   edges: <T = Promise<AsyncIterator<PostEdgeSubscription>>>() => T;
   aggregate: <T = AggregatePostSubscription>() => T;
+}
+
+export interface DayHabitSubscriptionPayload {
+  mutation: MutationType;
+  node: DayHabit;
+  updatedFields: String[];
+  previousValues: DayHabitPreviousValues;
+}
+
+export interface DayHabitSubscriptionPayloadPromise
+  extends Promise<DayHabitSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = DayHabitPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = DayHabitPreviousValuesPromise>() => T;
+}
+
+export interface DayHabitSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<DayHabitSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = DayHabitSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = DayHabitPreviousValuesSubscription>() => T;
+}
+
+export interface MoodEdge {
+  node: Mood;
+  cursor: String;
+}
+
+export interface MoodEdgePromise extends Promise<MoodEdge>, Fragmentable {
+  node: <T = MoodPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface MoodEdgeSubscription
+  extends Promise<AsyncIterator<MoodEdge>>,
+    Fragmentable {
+  node: <T = MoodSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface DayHabitPreviousValues {
+  id: ID_Output;
+  done: Boolean;
+  date: DateTimeOutput;
+}
+
+export interface DayHabitPreviousValuesPromise
+  extends Promise<DayHabitPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  done: () => Promise<Boolean>;
+  date: () => Promise<DateTimeOutput>;
+}
+
+export interface DayHabitPreviousValuesSubscription
+  extends Promise<AsyncIterator<DayHabitPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  done: () => Promise<AsyncIterator<Boolean>>;
+  date: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface AggregateHabit {
+  count: Int;
+}
+
+export interface AggregateHabitPromise
+  extends Promise<AggregateHabit>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateHabitSubscription
+  extends Promise<AsyncIterator<AggregateHabit>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PostSubscriptionPayload {
+  mutation: MutationType;
+  node: Post;
+  updatedFields: String[];
+  previousValues: PostPreviousValues;
+}
+
+export interface PostSubscriptionPayloadPromise
+  extends Promise<PostSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PostPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PostPreviousValuesPromise>() => T;
+}
+
+export interface PostSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PostSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PostSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PostPreviousValuesSubscription>() => T;
+}
+
+export interface UserSubscriptionPayload {
+  mutation: MutationType;
+  node: User;
+  updatedFields: String[];
+  previousValues: UserPreviousValues;
+}
+
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = UserPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
+}
+
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
+}
+
+export interface HabitSubscriptionPayload {
+  mutation: MutationType;
+  node: Habit;
+  updatedFields: String[];
+  previousValues: HabitPreviousValues;
+}
+
+export interface HabitSubscriptionPayloadPromise
+  extends Promise<HabitSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = HabitPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = HabitPreviousValuesPromise>() => T;
+}
+
+export interface HabitSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<HabitSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = HabitSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = HabitPreviousValuesSubscription>() => T;
 }
 
 export interface PostPreviousValues {
@@ -1739,238 +1946,26 @@ export interface PostPreviousValuesSubscription
   content: () => Promise<AsyncIterator<String>>;
 }
 
-export interface MoodEdge {
-  node: Mood;
-  cursor: String;
-}
-
-export interface MoodEdgePromise extends Promise<MoodEdge>, Fragmentable {
-  node: <T = MoodPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface MoodEdgeSubscription
-  extends Promise<AsyncIterator<MoodEdge>>,
-    Fragmentable {
-  node: <T = MoodSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface DayHabitSubscriptionPayload {
-  mutation: MutationType;
-  node: DayHabit;
-  updatedFields: String[];
-  previousValues: DayHabitPreviousValues;
-}
-
-export interface DayHabitSubscriptionPayloadPromise
-  extends Promise<DayHabitSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = DayHabitPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = DayHabitPreviousValuesPromise>() => T;
-}
-
-export interface DayHabitSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<DayHabitSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = DayHabitSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = DayHabitPreviousValuesSubscription>() => T;
-}
-
-export interface AggregateHabit {
+export interface AggregateMood {
   count: Int;
 }
 
-export interface AggregateHabitPromise
-  extends Promise<AggregateHabit>,
+export interface AggregateMoodPromise
+  extends Promise<AggregateMood>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateHabitSubscription
-  extends Promise<AsyncIterator<AggregateHabit>>,
+export interface AggregateMoodSubscription
+  extends Promise<AsyncIterator<AggregateMood>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface DayHabitPreviousValues {
-  id: ID_Output;
-  done: Boolean;
-  date: Int;
-}
-
-export interface DayHabitPreviousValuesPromise
-  extends Promise<DayHabitPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  done: () => Promise<Boolean>;
-  date: () => Promise<Int>;
-}
-
-export interface DayHabitPreviousValuesSubscription
-  extends Promise<AsyncIterator<DayHabitPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  done: () => Promise<AsyncIterator<Boolean>>;
-  date: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface HabitConnection {
-  pageInfo: PageInfo;
-  edges: HabitEdge[];
-}
-
-export interface HabitConnectionPromise
-  extends Promise<HabitConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<HabitEdge>>() => T;
-  aggregate: <T = AggregateHabitPromise>() => T;
-}
-
-export interface HabitConnectionSubscription
-  extends Promise<AsyncIterator<HabitConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<HabitEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateHabitSubscription>() => T;
-}
-
-export interface Habit {
-  id: ID_Output;
-  title: String;
-  description?: String;
-  starred: Boolean;
-}
-
-export interface HabitPromise extends Promise<Habit>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  description: () => Promise<String>;
-  starred: () => Promise<Boolean>;
-  owner: <T = UserPromise>() => T;
-  habits: <T = FragmentableArray<DayHabit>>(
-    args?: {
-      where?: DayHabitWhereInput;
-      orderBy?: DayHabitOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-}
-
-export interface HabitSubscription
-  extends Promise<AsyncIterator<Habit>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  description: () => Promise<AsyncIterator<String>>;
-  starred: () => Promise<AsyncIterator<Boolean>>;
-  owner: <T = UserSubscription>() => T;
-  habits: <T = Promise<AsyncIterator<DayHabitSubscription>>>(
-    args?: {
-      where?: DayHabitWhereInput;
-      orderBy?: DayHabitOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-}
-
-export interface UserEdge {
-  node: User;
-  cursor: String;
-}
-
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface HabitSubscriptionPayload {
-  mutation: MutationType;
-  node: Habit;
-  updatedFields: String[];
-  previousValues: HabitPreviousValues;
-}
-
-export interface HabitSubscriptionPayloadPromise
-  extends Promise<HabitSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = HabitPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = HabitPreviousValuesPromise>() => T;
-}
-
-export interface HabitSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<HabitSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = HabitSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = HabitPreviousValuesSubscription>() => T;
-}
-
-export interface PostEdge {
-  node: Post;
-  cursor: String;
-}
-
-export interface PostEdgePromise extends Promise<PostEdge>, Fragmentable {
-  node: <T = PostPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PostEdgeSubscription
-  extends Promise<AsyncIterator<PostEdge>>,
-    Fragmentable {
-  node: <T = PostSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface MoodConnection {
-  pageInfo: PageInfo;
-  edges: MoodEdge[];
-}
-
-export interface MoodConnectionPromise
-  extends Promise<MoodConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<MoodEdge>>() => T;
-  aggregate: <T = AggregateMoodPromise>() => T;
-}
-
-export interface MoodConnectionSubscription
-  extends Promise<AsyncIterator<MoodConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<MoodEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateMoodSubscription>() => T;
 }
 
 export interface MoodPreviousValues {
   id: ID_Output;
   type: Moods;
-  date: Int;
+  date: DateTimeOutput;
 }
 
 export interface MoodPreviousValuesPromise
@@ -1978,7 +1973,7 @@ export interface MoodPreviousValuesPromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   type: () => Promise<Moods>;
-  date: () => Promise<Int>;
+  date: () => Promise<DateTimeOutput>;
 }
 
 export interface MoodPreviousValuesSubscription
@@ -1986,7 +1981,7 @@ export interface MoodPreviousValuesSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   type: () => Promise<AsyncIterator<Moods>>;
-  date: () => Promise<AsyncIterator<Int>>;
+  date: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface MoodSubscriptionPayload {
@@ -2014,29 +2009,26 @@ export interface MoodSubscriptionPayloadSubscription
   previousValues: <T = MoodPreviousValuesSubscription>() => T;
 }
 
-export interface PostSubscriptionPayload {
-  mutation: MutationType;
-  node: Post;
-  updatedFields: String[];
-  previousValues: PostPreviousValues;
+export interface Mood {
+  id: ID_Output;
+  type: Moods;
+  date: DateTimeOutput;
 }
 
-export interface PostSubscriptionPayloadPromise
-  extends Promise<PostSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PostPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PostPreviousValuesPromise>() => T;
+export interface MoodPromise extends Promise<Mood>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  type: () => Promise<Moods>;
+  date: () => Promise<DateTimeOutput>;
+  owner: <T = UserPromise>() => T;
 }
 
-export interface PostSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PostSubscriptionPayload>>,
+export interface MoodSubscription
+  extends Promise<AsyncIterator<Mood>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PostSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PostPreviousValuesSubscription>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  type: () => Promise<AsyncIterator<Moods>>;
+  date: () => Promise<AsyncIterator<DateTimeOutput>>;
+  owner: <T = UserSubscription>() => T;
 }
 
 export interface HabitPreviousValues {
@@ -2064,95 +2056,96 @@ export interface HabitPreviousValuesSubscription
   starred: () => Promise<AsyncIterator<Boolean>>;
 }
 
-export interface HabitEdge {
-  node: Habit;
+export interface MoodConnection {
+  pageInfo: PageInfo;
+  edges: MoodEdge[];
+}
+
+export interface MoodConnectionPromise
+  extends Promise<MoodConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<MoodEdge>>() => T;
+  aggregate: <T = AggregateMoodPromise>() => T;
+}
+
+export interface MoodConnectionSubscription
+  extends Promise<AsyncIterator<MoodConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<MoodEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateMoodSubscription>() => T;
+}
+
+export interface PostEdge {
+  node: Post;
   cursor: String;
 }
 
-export interface HabitEdgePromise extends Promise<HabitEdge>, Fragmentable {
-  node: <T = HabitPromise>() => T;
+export interface PostEdgePromise extends Promise<PostEdge>, Fragmentable {
+  node: <T = PostPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface HabitEdgeSubscription
-  extends Promise<AsyncIterator<HabitEdge>>,
+export interface PostEdgeSubscription
+  extends Promise<AsyncIterator<PostEdge>>,
     Fragmentable {
-  node: <T = HabitSubscription>() => T;
+  node: <T = PostSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregateMood {
-  count: Int;
+export interface UserEdge {
+  node: User;
+  cursor: String;
 }
 
-export interface AggregateMoodPromise
-  extends Promise<AggregateMood>,
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
     Fragmentable {
-  count: () => Promise<Int>;
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregateMoodSubscription
-  extends Promise<AsyncIterator<AggregateMood>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface DayHabit {
+export interface Post {
   id: ID_Output;
-  done: Boolean;
-  date: Int;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  published: Boolean;
+  title: String;
+  content: String;
 }
 
-export interface DayHabitPromise extends Promise<DayHabit>, Fragmentable {
+export interface PostPromise extends Promise<Post>, Fragmentable {
   id: () => Promise<ID_Output>;
-  done: () => Promise<Boolean>;
-  date: () => Promise<Int>;
-  habit: <T = HabitPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  published: () => Promise<Boolean>;
+  title: () => Promise<String>;
+  content: () => Promise<String>;
+  author: <T = UserPromise>() => T;
 }
 
-export interface DayHabitSubscription
-  extends Promise<AsyncIterator<DayHabit>>,
+export interface PostSubscription
+  extends Promise<AsyncIterator<Post>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  done: () => Promise<AsyncIterator<Boolean>>;
-  date: () => Promise<AsyncIterator<Int>>;
-  habit: <T = HabitSubscription>() => T;
-}
-
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
-}
-
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  published: () => Promise<AsyncIterator<Boolean>>;
+  title: () => Promise<AsyncIterator<String>>;
+  content: () => Promise<AsyncIterator<String>>;
+  author: <T = UserSubscription>() => T;
 }
 
 /*
-DateTime scalar input type, allowing Date
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
 */
-export type DateTimeInput = Date | string;
-
-/*
-DateTime scalar output type, which is always a string
-*/
-export type DateTimeOutput = string;
+export type Int = number;
 
 export type Long = string;
 
@@ -2163,19 +2156,24 @@ export type ID_Input = string | number;
 export type ID_Output = string;
 
 /*
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+*/
+export type String = string;
+
+/*
 The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+DateTime scalar input type, allowing Date
 */
-export type Int = number;
+export type DateTimeInput = Date | string;
 
 /*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+DateTime scalar output type, which is always a string
 */
-export type String = string;
+export type DateTimeOutput = string;
 
 /**
  * Model Metadata

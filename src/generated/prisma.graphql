@@ -1,3 +1,6 @@
+# source: http://prisma:4466/uzual/dev
+# timestamp: Tue Apr 23 2019 14:34:57 GMT+0000 (Coordinated Universal Time)
+
 type AggregateDayHabit {
   count: Int!
 }
@@ -19,27 +22,32 @@ type AggregateUser {
 }
 
 type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
   count: Long!
 }
 
 scalar DateTime
 
-type DayHabit {
+type DayHabit implements Node {
   id: ID!
   done: Boolean!
-  date: Int!
+  date: DateTime!
   habit: Habit!
 }
 
+"""A connection to a list of items."""
 type DayHabitConnection {
+  """Information to aid in pagination."""
   pageInfo: PageInfo!
+
+  """A list of edges."""
   edges: [DayHabitEdge]!
   aggregate: AggregateDayHabit!
 }
 
 input DayHabitCreateInput {
   done: Boolean
-  date: Int!
+  date: DateTime!
   habit: HabitCreateOneWithoutHabitsInput!
 }
 
@@ -50,11 +58,15 @@ input DayHabitCreateManyWithoutHabitInput {
 
 input DayHabitCreateWithoutHabitInput {
   done: Boolean
-  date: Int!
+  date: DateTime!
 }
 
+"""An edge in a connection."""
 type DayHabitEdge {
+  """The item at the end of the edge."""
   node: DayHabit!
+
+  """A cursor for use in pagination."""
   cursor: String!
 }
 
@@ -65,46 +77,93 @@ enum DayHabitOrderByInput {
   done_DESC
   date_ASC
   date_DESC
-  createdAt_ASC
-  createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
 }
 
 type DayHabitPreviousValues {
   id: ID!
   done: Boolean!
-  date: Int!
+  date: DateTime!
 }
 
 input DayHabitScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [DayHabitScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [DayHabitScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [DayHabitScalarWhereInput!]
   id: ID
+
+  """All values that are not equal to given value."""
   id_not: ID
+
+  """All values that are contained in given list."""
   id_in: [ID!]
+
+  """All values that are not contained in given list."""
   id_not_in: [ID!]
+
+  """All values less than the given value."""
   id_lt: ID
+
+  """All values less than or equal the given value."""
   id_lte: ID
+
+  """All values greater than the given value."""
   id_gt: ID
+
+  """All values greater than or equal the given value."""
   id_gte: ID
+
+  """All values containing the given string."""
   id_contains: ID
+
+  """All values not containing the given string."""
   id_not_contains: ID
+
+  """All values starting with the given string."""
   id_starts_with: ID
+
+  """All values not starting with the given string."""
   id_not_starts_with: ID
+
+  """All values ending with the given string."""
   id_ends_with: ID
+
+  """All values not ending with the given string."""
   id_not_ends_with: ID
   done: Boolean
+
+  """All values that are not equal to given value."""
   done_not: Boolean
-  date: Int
-  date_not: Int
-  date_in: [Int!]
-  date_not_in: [Int!]
-  date_lt: Int
-  date_lte: Int
-  date_gt: Int
-  date_gte: Int
-  AND: [DayHabitScalarWhereInput!]
-  OR: [DayHabitScalarWhereInput!]
-  NOT: [DayHabitScalarWhereInput!]
+  date: DateTime
+
+  """All values that are not equal to given value."""
+  date_not: DateTime
+
+  """All values that are contained in given list."""
+  date_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  date_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  date_lt: DateTime
+
+  """All values less than or equal the given value."""
+  date_lte: DateTime
+
+  """All values greater than the given value."""
+  date_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  date_gte: DateTime
 }
 
 type DayHabitSubscriptionPayload {
@@ -115,42 +174,61 @@ type DayHabitSubscriptionPayload {
 }
 
 input DayHabitSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [DayHabitSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [DayHabitSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [DayHabitSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
   updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
   updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
   updatedFields_contains_some: [String!]
   node: DayHabitWhereInput
-  AND: [DayHabitSubscriptionWhereInput!]
-  OR: [DayHabitSubscriptionWhereInput!]
-  NOT: [DayHabitSubscriptionWhereInput!]
 }
 
 input DayHabitUpdateInput {
   done: Boolean
-  date: Int
+  date: DateTime
   habit: HabitUpdateOneRequiredWithoutHabitsInput
 }
 
 input DayHabitUpdateManyDataInput {
   done: Boolean
-  date: Int
+  date: DateTime
 }
 
 input DayHabitUpdateManyMutationInput {
   done: Boolean
-  date: Int
+  date: DateTime
 }
 
 input DayHabitUpdateManyWithoutHabitInput {
   create: [DayHabitCreateWithoutHabitInput!]
-  delete: [DayHabitWhereUniqueInput!]
   connect: [DayHabitWhereUniqueInput!]
   set: [DayHabitWhereUniqueInput!]
   disconnect: [DayHabitWhereUniqueInput!]
+  delete: [DayHabitWhereUniqueInput!]
   update: [DayHabitUpdateWithWhereUniqueWithoutHabitInput!]
-  upsert: [DayHabitUpsertWithWhereUniqueWithoutHabitInput!]
-  deleteMany: [DayHabitScalarWhereInput!]
   updateMany: [DayHabitUpdateManyWithWhereNestedInput!]
+  deleteMany: [DayHabitScalarWhereInput!]
+  upsert: [DayHabitUpsertWithWhereUniqueWithoutHabitInput!]
 }
 
 input DayHabitUpdateManyWithWhereNestedInput {
@@ -160,7 +238,7 @@ input DayHabitUpdateManyWithWhereNestedInput {
 
 input DayHabitUpdateWithoutHabitDataInput {
   done: Boolean
-  date: Int
+  date: DateTime
 }
 
 input DayHabitUpdateWithWhereUniqueWithoutHabitInput {
@@ -175,42 +253,88 @@ input DayHabitUpsertWithWhereUniqueWithoutHabitInput {
 }
 
 input DayHabitWhereInput {
+  """Logical AND on all given filters."""
+  AND: [DayHabitWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [DayHabitWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [DayHabitWhereInput!]
   id: ID
+
+  """All values that are not equal to given value."""
   id_not: ID
+
+  """All values that are contained in given list."""
   id_in: [ID!]
+
+  """All values that are not contained in given list."""
   id_not_in: [ID!]
+
+  """All values less than the given value."""
   id_lt: ID
+
+  """All values less than or equal the given value."""
   id_lte: ID
+
+  """All values greater than the given value."""
   id_gt: ID
+
+  """All values greater than or equal the given value."""
   id_gte: ID
+
+  """All values containing the given string."""
   id_contains: ID
+
+  """All values not containing the given string."""
   id_not_contains: ID
+
+  """All values starting with the given string."""
   id_starts_with: ID
+
+  """All values not starting with the given string."""
   id_not_starts_with: ID
+
+  """All values ending with the given string."""
   id_ends_with: ID
+
+  """All values not ending with the given string."""
   id_not_ends_with: ID
   done: Boolean
+
+  """All values that are not equal to given value."""
   done_not: Boolean
-  date: Int
-  date_not: Int
-  date_in: [Int!]
-  date_not_in: [Int!]
-  date_lt: Int
-  date_lte: Int
-  date_gt: Int
-  date_gte: Int
+  date: DateTime
+
+  """All values that are not equal to given value."""
+  date_not: DateTime
+
+  """All values that are contained in given list."""
+  date_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  date_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  date_lt: DateTime
+
+  """All values less than or equal the given value."""
+  date_lte: DateTime
+
+  """All values greater than the given value."""
+  date_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  date_gte: DateTime
   habit: HabitWhereInput
-  AND: [DayHabitWhereInput!]
-  OR: [DayHabitWhereInput!]
-  NOT: [DayHabitWhereInput!]
 }
 
 input DayHabitWhereUniqueInput {
   id: ID
-  date: Int
 }
 
-type Habit {
+type Habit implements Node {
   id: ID!
   title: String!
   description: String
@@ -219,8 +343,12 @@ type Habit {
   habits(where: DayHabitWhereInput, orderBy: DayHabitOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [DayHabit!]
 }
 
+"""A connection to a list of items."""
 type HabitConnection {
+  """Information to aid in pagination."""
   pageInfo: PageInfo!
+
+  """A list of edges."""
   edges: [HabitEdge]!
   aggregate: AggregateHabit!
 }
@@ -257,8 +385,12 @@ input HabitCreateWithoutOwnerInput {
   habits: DayHabitCreateManyWithoutHabitInput
 }
 
+"""An edge in a connection."""
 type HabitEdge {
+  """The item at the end of the edge."""
   node: Habit!
+
+  """A cursor for use in pagination."""
   cursor: String!
 }
 
@@ -271,10 +403,10 @@ enum HabitOrderByInput {
   description_DESC
   starred_ASC
   starred_DESC
-  createdAt_ASC
-  createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
 }
 
 type HabitPreviousValues {
@@ -285,53 +417,138 @@ type HabitPreviousValues {
 }
 
 input HabitScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [HabitScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [HabitScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [HabitScalarWhereInput!]
   id: ID
+
+  """All values that are not equal to given value."""
   id_not: ID
+
+  """All values that are contained in given list."""
   id_in: [ID!]
+
+  """All values that are not contained in given list."""
   id_not_in: [ID!]
+
+  """All values less than the given value."""
   id_lt: ID
+
+  """All values less than or equal the given value."""
   id_lte: ID
+
+  """All values greater than the given value."""
   id_gt: ID
+
+  """All values greater than or equal the given value."""
   id_gte: ID
+
+  """All values containing the given string."""
   id_contains: ID
+
+  """All values not containing the given string."""
   id_not_contains: ID
+
+  """All values starting with the given string."""
   id_starts_with: ID
+
+  """All values not starting with the given string."""
   id_not_starts_with: ID
+
+  """All values ending with the given string."""
   id_ends_with: ID
+
+  """All values not ending with the given string."""
   id_not_ends_with: ID
   title: String
+
+  """All values that are not equal to given value."""
   title_not: String
+
+  """All values that are contained in given list."""
   title_in: [String!]
+
+  """All values that are not contained in given list."""
   title_not_in: [String!]
+
+  """All values less than the given value."""
   title_lt: String
+
+  """All values less than or equal the given value."""
   title_lte: String
+
+  """All values greater than the given value."""
   title_gt: String
+
+  """All values greater than or equal the given value."""
   title_gte: String
+
+  """All values containing the given string."""
   title_contains: String
+
+  """All values not containing the given string."""
   title_not_contains: String
+
+  """All values starting with the given string."""
   title_starts_with: String
+
+  """All values not starting with the given string."""
   title_not_starts_with: String
+
+  """All values ending with the given string."""
   title_ends_with: String
+
+  """All values not ending with the given string."""
   title_not_ends_with: String
   description: String
+
+  """All values that are not equal to given value."""
   description_not: String
+
+  """All values that are contained in given list."""
   description_in: [String!]
+
+  """All values that are not contained in given list."""
   description_not_in: [String!]
+
+  """All values less than the given value."""
   description_lt: String
+
+  """All values less than or equal the given value."""
   description_lte: String
+
+  """All values greater than the given value."""
   description_gt: String
+
+  """All values greater than or equal the given value."""
   description_gte: String
+
+  """All values containing the given string."""
   description_contains: String
+
+  """All values not containing the given string."""
   description_not_contains: String
+
+  """All values starting with the given string."""
   description_starts_with: String
+
+  """All values not starting with the given string."""
   description_not_starts_with: String
+
+  """All values ending with the given string."""
   description_ends_with: String
+
+  """All values not ending with the given string."""
   description_not_ends_with: String
   starred: Boolean
+
+  """All values that are not equal to given value."""
   starred_not: Boolean
-  AND: [HabitScalarWhereInput!]
-  OR: [HabitScalarWhereInput!]
-  NOT: [HabitScalarWhereInput!]
 }
 
 type HabitSubscriptionPayload {
@@ -342,14 +559,33 @@ type HabitSubscriptionPayload {
 }
 
 input HabitSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [HabitSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [HabitSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [HabitSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
   updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
   updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
   updatedFields_contains_some: [String!]
   node: HabitWhereInput
-  AND: [HabitSubscriptionWhereInput!]
-  OR: [HabitSubscriptionWhereInput!]
-  NOT: [HabitSubscriptionWhereInput!]
 }
 
 input HabitUpdateInput {
@@ -374,14 +610,14 @@ input HabitUpdateManyMutationInput {
 
 input HabitUpdateManyWithoutOwnerInput {
   create: [HabitCreateWithoutOwnerInput!]
-  delete: [HabitWhereUniqueInput!]
   connect: [HabitWhereUniqueInput!]
   set: [HabitWhereUniqueInput!]
   disconnect: [HabitWhereUniqueInput!]
+  delete: [HabitWhereUniqueInput!]
   update: [HabitUpdateWithWhereUniqueWithoutOwnerInput!]
-  upsert: [HabitUpsertWithWhereUniqueWithoutOwnerInput!]
-  deleteMany: [HabitScalarWhereInput!]
   updateMany: [HabitUpdateManyWithWhereNestedInput!]
+  deleteMany: [HabitScalarWhereInput!]
+  upsert: [HabitUpsertWithWhereUniqueWithoutOwnerInput!]
 }
 
 input HabitUpdateManyWithWhereNestedInput {
@@ -391,9 +627,9 @@ input HabitUpdateManyWithWhereNestedInput {
 
 input HabitUpdateOneRequiredWithoutHabitsInput {
   create: HabitCreateWithoutHabitsInput
+  connect: HabitWhereUniqueInput
   update: HabitUpdateWithoutHabitsDataInput
   upsert: HabitUpsertWithoutHabitsInput
-  connect: HabitWhereUniqueInput
 }
 
 input HabitUpdateWithoutHabitsDataInput {
@@ -427,81 +663,177 @@ input HabitUpsertWithWhereUniqueWithoutOwnerInput {
 }
 
 input HabitWhereInput {
+  """Logical AND on all given filters."""
+  AND: [HabitWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [HabitWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [HabitWhereInput!]
   id: ID
+
+  """All values that are not equal to given value."""
   id_not: ID
+
+  """All values that are contained in given list."""
   id_in: [ID!]
+
+  """All values that are not contained in given list."""
   id_not_in: [ID!]
+
+  """All values less than the given value."""
   id_lt: ID
+
+  """All values less than or equal the given value."""
   id_lte: ID
+
+  """All values greater than the given value."""
   id_gt: ID
+
+  """All values greater than or equal the given value."""
   id_gte: ID
+
+  """All values containing the given string."""
   id_contains: ID
+
+  """All values not containing the given string."""
   id_not_contains: ID
+
+  """All values starting with the given string."""
   id_starts_with: ID
+
+  """All values not starting with the given string."""
   id_not_starts_with: ID
+
+  """All values ending with the given string."""
   id_ends_with: ID
+
+  """All values not ending with the given string."""
   id_not_ends_with: ID
   title: String
+
+  """All values that are not equal to given value."""
   title_not: String
+
+  """All values that are contained in given list."""
   title_in: [String!]
+
+  """All values that are not contained in given list."""
   title_not_in: [String!]
+
+  """All values less than the given value."""
   title_lt: String
+
+  """All values less than or equal the given value."""
   title_lte: String
+
+  """All values greater than the given value."""
   title_gt: String
+
+  """All values greater than or equal the given value."""
   title_gte: String
+
+  """All values containing the given string."""
   title_contains: String
+
+  """All values not containing the given string."""
   title_not_contains: String
+
+  """All values starting with the given string."""
   title_starts_with: String
+
+  """All values not starting with the given string."""
   title_not_starts_with: String
+
+  """All values ending with the given string."""
   title_ends_with: String
+
+  """All values not ending with the given string."""
   title_not_ends_with: String
   description: String
+
+  """All values that are not equal to given value."""
   description_not: String
+
+  """All values that are contained in given list."""
   description_in: [String!]
+
+  """All values that are not contained in given list."""
   description_not_in: [String!]
+
+  """All values less than the given value."""
   description_lt: String
+
+  """All values less than or equal the given value."""
   description_lte: String
+
+  """All values greater than the given value."""
   description_gt: String
+
+  """All values greater than or equal the given value."""
   description_gte: String
+
+  """All values containing the given string."""
   description_contains: String
+
+  """All values not containing the given string."""
   description_not_contains: String
+
+  """All values starting with the given string."""
   description_starts_with: String
+
+  """All values not starting with the given string."""
   description_not_starts_with: String
+
+  """All values ending with the given string."""
   description_ends_with: String
+
+  """All values not ending with the given string."""
   description_not_ends_with: String
   starred: Boolean
+
+  """All values that are not equal to given value."""
   starred_not: Boolean
   owner: UserWhereInput
   habits_every: DayHabitWhereInput
   habits_some: DayHabitWhereInput
   habits_none: DayHabitWhereInput
-  AND: [HabitWhereInput!]
-  OR: [HabitWhereInput!]
-  NOT: [HabitWhereInput!]
 }
 
 input HabitWhereUniqueInput {
   id: ID
 }
 
+"""Raw JSON value"""
+scalar Json
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
 scalar Long
 
-type Mood {
+type Mood implements Node {
   id: ID!
   type: Moods!
-  date: Int!
+  date: DateTime!
   owner: User!
 }
 
+"""A connection to a list of items."""
 type MoodConnection {
+  """Information to aid in pagination."""
   pageInfo: PageInfo!
+
+  """A list of edges."""
   edges: [MoodEdge]!
   aggregate: AggregateMood!
 }
 
 input MoodCreateInput {
   type: Moods!
-  date: Int!
+  date: DateTime!
   owner: UserCreateOneWithoutMoodsInput!
 }
 
@@ -512,11 +844,15 @@ input MoodCreateManyWithoutOwnerInput {
 
 input MoodCreateWithoutOwnerInput {
   type: Moods!
-  date: Int!
+  date: DateTime!
 }
 
+"""An edge in a connection."""
 type MoodEdge {
+  """The item at the end of the edge."""
   node: Mood!
+
+  """A cursor for use in pagination."""
   cursor: String!
 }
 
@@ -527,16 +863,16 @@ enum MoodOrderByInput {
   type_DESC
   date_ASC
   date_DESC
-  createdAt_ASC
-  createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
 }
 
 type MoodPreviousValues {
   id: ID!
   type: Moods!
-  date: Int!
+  date: DateTime!
 }
 
 enum Moods {
@@ -550,35 +886,86 @@ enum Moods {
 }
 
 input MoodScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [MoodScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [MoodScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [MoodScalarWhereInput!]
   id: ID
+
+  """All values that are not equal to given value."""
   id_not: ID
+
+  """All values that are contained in given list."""
   id_in: [ID!]
+
+  """All values that are not contained in given list."""
   id_not_in: [ID!]
+
+  """All values less than the given value."""
   id_lt: ID
+
+  """All values less than or equal the given value."""
   id_lte: ID
+
+  """All values greater than the given value."""
   id_gt: ID
+
+  """All values greater than or equal the given value."""
   id_gte: ID
+
+  """All values containing the given string."""
   id_contains: ID
+
+  """All values not containing the given string."""
   id_not_contains: ID
+
+  """All values starting with the given string."""
   id_starts_with: ID
+
+  """All values not starting with the given string."""
   id_not_starts_with: ID
+
+  """All values ending with the given string."""
   id_ends_with: ID
+
+  """All values not ending with the given string."""
   id_not_ends_with: ID
   type: Moods
+
+  """All values that are not equal to given value."""
   type_not: Moods
+
+  """All values that are contained in given list."""
   type_in: [Moods!]
+
+  """All values that are not contained in given list."""
   type_not_in: [Moods!]
-  date: Int
-  date_not: Int
-  date_in: [Int!]
-  date_not_in: [Int!]
-  date_lt: Int
-  date_lte: Int
-  date_gt: Int
-  date_gte: Int
-  AND: [MoodScalarWhereInput!]
-  OR: [MoodScalarWhereInput!]
-  NOT: [MoodScalarWhereInput!]
+  date: DateTime
+
+  """All values that are not equal to given value."""
+  date_not: DateTime
+
+  """All values that are contained in given list."""
+  date_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  date_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  date_lt: DateTime
+
+  """All values less than or equal the given value."""
+  date_lte: DateTime
+
+  """All values greater than the given value."""
+  date_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  date_gte: DateTime
 }
 
 type MoodSubscriptionPayload {
@@ -589,42 +976,61 @@ type MoodSubscriptionPayload {
 }
 
 input MoodSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [MoodSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [MoodSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [MoodSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
   updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
   updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
   updatedFields_contains_some: [String!]
   node: MoodWhereInput
-  AND: [MoodSubscriptionWhereInput!]
-  OR: [MoodSubscriptionWhereInput!]
-  NOT: [MoodSubscriptionWhereInput!]
 }
 
 input MoodUpdateInput {
   type: Moods
-  date: Int
+  date: DateTime
   owner: UserUpdateOneRequiredWithoutMoodsInput
 }
 
 input MoodUpdateManyDataInput {
   type: Moods
-  date: Int
+  date: DateTime
 }
 
 input MoodUpdateManyMutationInput {
   type: Moods
-  date: Int
+  date: DateTime
 }
 
 input MoodUpdateManyWithoutOwnerInput {
   create: [MoodCreateWithoutOwnerInput!]
-  delete: [MoodWhereUniqueInput!]
   connect: [MoodWhereUniqueInput!]
   set: [MoodWhereUniqueInput!]
   disconnect: [MoodWhereUniqueInput!]
+  delete: [MoodWhereUniqueInput!]
   update: [MoodUpdateWithWhereUniqueWithoutOwnerInput!]
-  upsert: [MoodUpsertWithWhereUniqueWithoutOwnerInput!]
-  deleteMany: [MoodScalarWhereInput!]
   updateMany: [MoodUpdateManyWithWhereNestedInput!]
+  deleteMany: [MoodScalarWhereInput!]
+  upsert: [MoodUpsertWithWhereUniqueWithoutOwnerInput!]
 }
 
 input MoodUpdateManyWithWhereNestedInput {
@@ -634,7 +1040,7 @@ input MoodUpdateManyWithWhereNestedInput {
 
 input MoodUpdateWithoutOwnerDataInput {
   type: Moods
-  date: Int
+  date: DateTime
 }
 
 input MoodUpdateWithWhereUniqueWithoutOwnerInput {
@@ -649,74 +1055,125 @@ input MoodUpsertWithWhereUniqueWithoutOwnerInput {
 }
 
 input MoodWhereInput {
+  """Logical AND on all given filters."""
+  AND: [MoodWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [MoodWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [MoodWhereInput!]
   id: ID
+
+  """All values that are not equal to given value."""
   id_not: ID
+
+  """All values that are contained in given list."""
   id_in: [ID!]
+
+  """All values that are not contained in given list."""
   id_not_in: [ID!]
+
+  """All values less than the given value."""
   id_lt: ID
+
+  """All values less than or equal the given value."""
   id_lte: ID
+
+  """All values greater than the given value."""
   id_gt: ID
+
+  """All values greater than or equal the given value."""
   id_gte: ID
+
+  """All values containing the given string."""
   id_contains: ID
+
+  """All values not containing the given string."""
   id_not_contains: ID
+
+  """All values starting with the given string."""
   id_starts_with: ID
+
+  """All values not starting with the given string."""
   id_not_starts_with: ID
+
+  """All values ending with the given string."""
   id_ends_with: ID
+
+  """All values not ending with the given string."""
   id_not_ends_with: ID
   type: Moods
+
+  """All values that are not equal to given value."""
   type_not: Moods
+
+  """All values that are contained in given list."""
   type_in: [Moods!]
+
+  """All values that are not contained in given list."""
   type_not_in: [Moods!]
-  date: Int
-  date_not: Int
-  date_in: [Int!]
-  date_not_in: [Int!]
-  date_lt: Int
-  date_lte: Int
-  date_gt: Int
-  date_gte: Int
+  date: DateTime
+
+  """All values that are not equal to given value."""
+  date_not: DateTime
+
+  """All values that are contained in given list."""
+  date_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  date_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  date_lt: DateTime
+
+  """All values less than or equal the given value."""
+  date_lte: DateTime
+
+  """All values greater than the given value."""
+  date_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  date_gte: DateTime
   owner: UserWhereInput
-  AND: [MoodWhereInput!]
-  OR: [MoodWhereInput!]
-  NOT: [MoodWhereInput!]
 }
 
 input MoodWhereUniqueInput {
   id: ID
-  date: Int
 }
 
 type Mutation {
-  createDayHabit(data: DayHabitCreateInput!): DayHabit!
-  updateDayHabit(data: DayHabitUpdateInput!, where: DayHabitWhereUniqueInput!): DayHabit
-  updateManyDayHabits(data: DayHabitUpdateManyMutationInput!, where: DayHabitWhereInput): BatchPayload!
-  upsertDayHabit(where: DayHabitWhereUniqueInput!, create: DayHabitCreateInput!, update: DayHabitUpdateInput!): DayHabit!
-  deleteDayHabit(where: DayHabitWhereUniqueInput!): DayHabit
-  deleteManyDayHabits(where: DayHabitWhereInput): BatchPayload!
-  createHabit(data: HabitCreateInput!): Habit!
-  updateHabit(data: HabitUpdateInput!, where: HabitWhereUniqueInput!): Habit
-  updateManyHabits(data: HabitUpdateManyMutationInput!, where: HabitWhereInput): BatchPayload!
-  upsertHabit(where: HabitWhereUniqueInput!, create: HabitCreateInput!, update: HabitUpdateInput!): Habit!
-  deleteHabit(where: HabitWhereUniqueInput!): Habit
-  deleteManyHabits(where: HabitWhereInput): BatchPayload!
-  createMood(data: MoodCreateInput!): Mood!
-  updateMood(data: MoodUpdateInput!, where: MoodWhereUniqueInput!): Mood
-  updateManyMoods(data: MoodUpdateManyMutationInput!, where: MoodWhereInput): BatchPayload!
-  upsertMood(where: MoodWhereUniqueInput!, create: MoodCreateInput!, update: MoodUpdateInput!): Mood!
-  deleteMood(where: MoodWhereUniqueInput!): Mood
-  deleteManyMoods(where: MoodWhereInput): BatchPayload!
   createPost(data: PostCreateInput!): Post!
-  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
-  updateManyPosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
-  upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
-  deletePost(where: PostWhereUniqueInput!): Post
-  deleteManyPosts(where: PostWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
+  createHabit(data: HabitCreateInput!): Habit!
+  createDayHabit(data: DayHabitCreateInput!): DayHabit!
+  createMood(data: MoodCreateInput!): Mood!
+  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  updateHabit(data: HabitUpdateInput!, where: HabitWhereUniqueInput!): Habit
+  updateDayHabit(data: DayHabitUpdateInput!, where: DayHabitWhereUniqueInput!): DayHabit
+  updateMood(data: MoodUpdateInput!, where: MoodWhereUniqueInput!): Mood
+  deletePost(where: PostWhereUniqueInput!): Post
   deleteUser(where: UserWhereUniqueInput!): User
+  deleteHabit(where: HabitWhereUniqueInput!): Habit
+  deleteDayHabit(where: DayHabitWhereUniqueInput!): DayHabit
+  deleteMood(where: MoodWhereUniqueInput!): Mood
+  upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertHabit(where: HabitWhereUniqueInput!, create: HabitCreateInput!, update: HabitUpdateInput!): Habit!
+  upsertDayHabit(where: DayHabitWhereUniqueInput!, create: DayHabitCreateInput!, update: DayHabitUpdateInput!): DayHabit!
+  upsertMood(where: MoodWhereUniqueInput!, create: MoodCreateInput!, update: MoodUpdateInput!): Mood!
+  updateManyPosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateManyHabits(data: HabitUpdateManyMutationInput!, where: HabitWhereInput): BatchPayload!
+  updateManyDayHabits(data: DayHabitUpdateManyMutationInput!, where: DayHabitWhereInput): BatchPayload!
+  updateManyMoods(data: MoodUpdateManyMutationInput!, where: MoodWhereInput): BatchPayload!
+  deleteManyPosts(where: PostWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyHabits(where: HabitWhereInput): BatchPayload!
+  deleteManyDayHabits(where: DayHabitWhereInput): BatchPayload!
+  deleteManyMoods(where: MoodWhereInput): BatchPayload!
+  executeRaw(database: PrismaDatabase, query: String!): Json!
 }
 
 enum MutationType {
@@ -725,18 +1182,28 @@ enum MutationType {
   DELETED
 }
 
+"""An object with an ID"""
 interface Node {
+  """The id of the object."""
   id: ID!
 }
 
+"""Information about pagination in a connection."""
 type PageInfo {
+  """When paginating forwards, are there more items?"""
   hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
   hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
   startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
   endCursor: String
 }
 
-type Post {
+type Post implements Node {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -746,8 +1213,12 @@ type Post {
   author: User!
 }
 
+"""A connection to a list of items."""
 type PostConnection {
+  """Information to aid in pagination."""
   pageInfo: PageInfo!
+
+  """A list of edges."""
   edges: [PostEdge]!
   aggregate: AggregatePost!
 }
@@ -770,8 +1241,12 @@ input PostCreateWithoutAuthorInput {
   content: String!
 }
 
+"""An edge in a connection."""
 type PostEdge {
+  """The item at the end of the edge."""
   node: Post!
+
+  """A cursor for use in pagination."""
   cursor: String!
 }
 
@@ -800,69 +1275,182 @@ type PostPreviousValues {
 }
 
 input PostScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PostScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PostScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PostScalarWhereInput!]
   id: ID
+
+  """All values that are not equal to given value."""
   id_not: ID
+
+  """All values that are contained in given list."""
   id_in: [ID!]
+
+  """All values that are not contained in given list."""
   id_not_in: [ID!]
+
+  """All values less than the given value."""
   id_lt: ID
+
+  """All values less than or equal the given value."""
   id_lte: ID
+
+  """All values greater than the given value."""
   id_gt: ID
+
+  """All values greater than or equal the given value."""
   id_gte: ID
+
+  """All values containing the given string."""
   id_contains: ID
+
+  """All values not containing the given string."""
   id_not_contains: ID
+
+  """All values starting with the given string."""
   id_starts_with: ID
+
+  """All values not starting with the given string."""
   id_not_starts_with: ID
+
+  """All values ending with the given string."""
   id_ends_with: ID
+
+  """All values not ending with the given string."""
   id_not_ends_with: ID
   createdAt: DateTime
+
+  """All values that are not equal to given value."""
   createdAt_not: DateTime
+
+  """All values that are contained in given list."""
   createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
   createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
   createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
   createdAt_lte: DateTime
+
+  """All values greater than the given value."""
   createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
   createdAt_gte: DateTime
   updatedAt: DateTime
+
+  """All values that are not equal to given value."""
   updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
   updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
   updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
   updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
   updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
   updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
   published: Boolean
+
+  """All values that are not equal to given value."""
   published_not: Boolean
   title: String
+
+  """All values that are not equal to given value."""
   title_not: String
+
+  """All values that are contained in given list."""
   title_in: [String!]
+
+  """All values that are not contained in given list."""
   title_not_in: [String!]
+
+  """All values less than the given value."""
   title_lt: String
+
+  """All values less than or equal the given value."""
   title_lte: String
+
+  """All values greater than the given value."""
   title_gt: String
+
+  """All values greater than or equal the given value."""
   title_gte: String
+
+  """All values containing the given string."""
   title_contains: String
+
+  """All values not containing the given string."""
   title_not_contains: String
+
+  """All values starting with the given string."""
   title_starts_with: String
+
+  """All values not starting with the given string."""
   title_not_starts_with: String
+
+  """All values ending with the given string."""
   title_ends_with: String
+
+  """All values not ending with the given string."""
   title_not_ends_with: String
   content: String
+
+  """All values that are not equal to given value."""
   content_not: String
+
+  """All values that are contained in given list."""
   content_in: [String!]
+
+  """All values that are not contained in given list."""
   content_not_in: [String!]
+
+  """All values less than the given value."""
   content_lt: String
+
+  """All values less than or equal the given value."""
   content_lte: String
+
+  """All values greater than the given value."""
   content_gt: String
+
+  """All values greater than or equal the given value."""
   content_gte: String
+
+  """All values containing the given string."""
   content_contains: String
+
+  """All values not containing the given string."""
   content_not_contains: String
+
+  """All values starting with the given string."""
   content_starts_with: String
+
+  """All values not starting with the given string."""
   content_not_starts_with: String
+
+  """All values ending with the given string."""
   content_ends_with: String
+
+  """All values not ending with the given string."""
   content_not_ends_with: String
-  AND: [PostScalarWhereInput!]
-  OR: [PostScalarWhereInput!]
-  NOT: [PostScalarWhereInput!]
 }
 
 type PostSubscriptionPayload {
@@ -873,14 +1461,33 @@ type PostSubscriptionPayload {
 }
 
 input PostSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PostSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PostSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PostSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
   updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
   updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
   updatedFields_contains_some: [String!]
   node: PostWhereInput
-  AND: [PostSubscriptionWhereInput!]
-  OR: [PostSubscriptionWhereInput!]
-  NOT: [PostSubscriptionWhereInput!]
 }
 
 input PostUpdateInput {
@@ -904,14 +1511,14 @@ input PostUpdateManyMutationInput {
 
 input PostUpdateManyWithoutAuthorInput {
   create: [PostCreateWithoutAuthorInput!]
-  delete: [PostWhereUniqueInput!]
   connect: [PostWhereUniqueInput!]
   set: [PostWhereUniqueInput!]
   disconnect: [PostWhereUniqueInput!]
+  delete: [PostWhereUniqueInput!]
   update: [PostUpdateWithWhereUniqueWithoutAuthorInput!]
-  upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput!]
-  deleteMany: [PostScalarWhereInput!]
   updateMany: [PostUpdateManyWithWhereNestedInput!]
+  deleteMany: [PostScalarWhereInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput!]
 }
 
 input PostUpdateManyWithWhereNestedInput {
@@ -937,104 +1544,226 @@ input PostUpsertWithWhereUniqueWithoutAuthorInput {
 }
 
 input PostWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PostWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PostWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PostWhereInput!]
   id: ID
+
+  """All values that are not equal to given value."""
   id_not: ID
+
+  """All values that are contained in given list."""
   id_in: [ID!]
+
+  """All values that are not contained in given list."""
   id_not_in: [ID!]
+
+  """All values less than the given value."""
   id_lt: ID
+
+  """All values less than or equal the given value."""
   id_lte: ID
+
+  """All values greater than the given value."""
   id_gt: ID
+
+  """All values greater than or equal the given value."""
   id_gte: ID
+
+  """All values containing the given string."""
   id_contains: ID
+
+  """All values not containing the given string."""
   id_not_contains: ID
+
+  """All values starting with the given string."""
   id_starts_with: ID
+
+  """All values not starting with the given string."""
   id_not_starts_with: ID
+
+  """All values ending with the given string."""
   id_ends_with: ID
+
+  """All values not ending with the given string."""
   id_not_ends_with: ID
   createdAt: DateTime
+
+  """All values that are not equal to given value."""
   createdAt_not: DateTime
+
+  """All values that are contained in given list."""
   createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
   createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
   createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
   createdAt_lte: DateTime
+
+  """All values greater than the given value."""
   createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
   createdAt_gte: DateTime
   updatedAt: DateTime
+
+  """All values that are not equal to given value."""
   updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
   updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
   updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
   updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
   updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
   updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
   updatedAt_gte: DateTime
   published: Boolean
+
+  """All values that are not equal to given value."""
   published_not: Boolean
   title: String
+
+  """All values that are not equal to given value."""
   title_not: String
+
+  """All values that are contained in given list."""
   title_in: [String!]
+
+  """All values that are not contained in given list."""
   title_not_in: [String!]
+
+  """All values less than the given value."""
   title_lt: String
+
+  """All values less than or equal the given value."""
   title_lte: String
+
+  """All values greater than the given value."""
   title_gt: String
+
+  """All values greater than or equal the given value."""
   title_gte: String
+
+  """All values containing the given string."""
   title_contains: String
+
+  """All values not containing the given string."""
   title_not_contains: String
+
+  """All values starting with the given string."""
   title_starts_with: String
+
+  """All values not starting with the given string."""
   title_not_starts_with: String
+
+  """All values ending with the given string."""
   title_ends_with: String
+
+  """All values not ending with the given string."""
   title_not_ends_with: String
   content: String
+
+  """All values that are not equal to given value."""
   content_not: String
+
+  """All values that are contained in given list."""
   content_in: [String!]
+
+  """All values that are not contained in given list."""
   content_not_in: [String!]
+
+  """All values less than the given value."""
   content_lt: String
+
+  """All values less than or equal the given value."""
   content_lte: String
+
+  """All values greater than the given value."""
   content_gt: String
+
+  """All values greater than or equal the given value."""
   content_gte: String
+
+  """All values containing the given string."""
   content_contains: String
+
+  """All values not containing the given string."""
   content_not_contains: String
+
+  """All values starting with the given string."""
   content_starts_with: String
+
+  """All values not starting with the given string."""
   content_not_starts_with: String
+
+  """All values ending with the given string."""
   content_ends_with: String
+
+  """All values not ending with the given string."""
   content_not_ends_with: String
   author: UserWhereInput
-  AND: [PostWhereInput!]
-  OR: [PostWhereInput!]
-  NOT: [PostWhereInput!]
 }
 
 input PostWhereUniqueInput {
   id: ID
 }
 
+enum PrismaDatabase {
+  default
+}
+
 type Query {
-  dayHabit(where: DayHabitWhereUniqueInput!): DayHabit
-  dayHabits(where: DayHabitWhereInput, orderBy: DayHabitOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [DayHabit]!
-  dayHabitsConnection(where: DayHabitWhereInput, orderBy: DayHabitOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DayHabitConnection!
-  habit(where: HabitWhereUniqueInput!): Habit
-  habits(where: HabitWhereInput, orderBy: HabitOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Habit]!
-  habitsConnection(where: HabitWhereInput, orderBy: HabitOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HabitConnection!
-  mood(where: MoodWhereUniqueInput!): Mood
-  moods(where: MoodWhereInput, orderBy: MoodOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Mood]!
-  moodsConnection(where: MoodWhereInput, orderBy: MoodOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): MoodConnection!
-  post(where: PostWhereUniqueInput!): Post
   posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
-  postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
-  user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  habits(where: HabitWhereInput, orderBy: HabitOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Habit]!
+  dayHabits(where: DayHabitWhereInput, orderBy: DayHabitOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [DayHabit]!
+  moods(where: MoodWhereInput, orderBy: MoodOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Mood]!
+  post(where: PostWhereUniqueInput!): Post
+  user(where: UserWhereUniqueInput!): User
+  habit(where: HabitWhereUniqueInput!): Habit
+  dayHabit(where: DayHabitWhereUniqueInput!): DayHabit
+  mood(where: MoodWhereUniqueInput!): Mood
+  postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  node(id: ID!): Node
+  habitsConnection(where: HabitWhereInput, orderBy: HabitOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): HabitConnection!
+  dayHabitsConnection(where: DayHabitWhereInput, orderBy: DayHabitOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): DayHabitConnection!
+  moodsConnection(where: MoodWhereInput, orderBy: MoodOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): MoodConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
 }
 
 type Subscription {
-  dayHabit(where: DayHabitSubscriptionWhereInput): DayHabitSubscriptionPayload
-  habit(where: HabitSubscriptionWhereInput): HabitSubscriptionPayload
-  mood(where: MoodSubscriptionWhereInput): MoodSubscriptionPayload
   post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  habit(where: HabitSubscriptionWhereInput): HabitSubscriptionPayload
+  dayHabit(where: DayHabitSubscriptionWhereInput): DayHabitSubscriptionPayload
+  mood(where: MoodSubscriptionWhereInput): MoodSubscriptionPayload
 }
 
-type User {
+type User implements Node {
   id: ID!
   email: String!
   password: String!
@@ -1046,8 +1775,12 @@ type User {
   isPro: Boolean!
 }
 
+"""A connection to a list of items."""
 type UserConnection {
+  """Information to aid in pagination."""
   pageInfo: PageInfo!
+
+  """A list of edges."""
   edges: [UserEdge]!
   aggregate: AggregateUser!
 }
@@ -1056,11 +1789,11 @@ input UserCreateInput {
   email: String!
   password: String!
   name: String!
-  posts: PostCreateManyWithoutAuthorInput
   pushToken: String
+  isPro: Boolean
+  posts: PostCreateManyWithoutAuthorInput
   habits: HabitCreateManyWithoutOwnerInput
   moods: MoodCreateManyWithoutOwnerInput
-  isPro: Boolean
 }
 
 input UserCreateOneWithoutHabitsInput {
@@ -1082,20 +1815,20 @@ input UserCreateWithoutHabitsInput {
   email: String!
   password: String!
   name: String!
-  posts: PostCreateManyWithoutAuthorInput
   pushToken: String
-  moods: MoodCreateManyWithoutOwnerInput
   isPro: Boolean
+  posts: PostCreateManyWithoutAuthorInput
+  moods: MoodCreateManyWithoutOwnerInput
 }
 
 input UserCreateWithoutMoodsInput {
   email: String!
   password: String!
   name: String!
-  posts: PostCreateManyWithoutAuthorInput
   pushToken: String
-  habits: HabitCreateManyWithoutOwnerInput
   isPro: Boolean
+  posts: PostCreateManyWithoutAuthorInput
+  habits: HabitCreateManyWithoutOwnerInput
 }
 
 input UserCreateWithoutPostsInput {
@@ -1103,13 +1836,17 @@ input UserCreateWithoutPostsInput {
   password: String!
   name: String!
   pushToken: String
+  isPro: Boolean
   habits: HabitCreateManyWithoutOwnerInput
   moods: MoodCreateManyWithoutOwnerInput
-  isPro: Boolean
 }
 
+"""An edge in a connection."""
 type UserEdge {
+  """The item at the end of the edge."""
   node: User!
+
+  """A cursor for use in pagination."""
   cursor: String!
 }
 
@@ -1126,10 +1863,10 @@ enum UserOrderByInput {
   pushToken_DESC
   isPro_ASC
   isPro_DESC
-  createdAt_ASC
-  createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
 }
 
 type UserPreviousValues {
@@ -1149,25 +1886,44 @@ type UserSubscriptionPayload {
 }
 
 input UserSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserSubscriptionWhereInput!]
+
+  """The subscription event gets dispatched when it's listed in mutation_in"""
   mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
   updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
   updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
   updatedFields_contains_some: [String!]
   node: UserWhereInput
-  AND: [UserSubscriptionWhereInput!]
-  OR: [UserSubscriptionWhereInput!]
-  NOT: [UserSubscriptionWhereInput!]
 }
 
 input UserUpdateInput {
   email: String
   password: String
   name: String
-  posts: PostUpdateManyWithoutAuthorInput
   pushToken: String
+  isPro: Boolean
+  posts: PostUpdateManyWithoutAuthorInput
   habits: HabitUpdateManyWithoutOwnerInput
   moods: MoodUpdateManyWithoutOwnerInput
-  isPro: Boolean
 }
 
 input UserUpdateManyMutationInput {
@@ -1180,43 +1936,43 @@ input UserUpdateManyMutationInput {
 
 input UserUpdateOneRequiredWithoutHabitsInput {
   create: UserCreateWithoutHabitsInput
+  connect: UserWhereUniqueInput
   update: UserUpdateWithoutHabitsDataInput
   upsert: UserUpsertWithoutHabitsInput
-  connect: UserWhereUniqueInput
 }
 
 input UserUpdateOneRequiredWithoutMoodsInput {
   create: UserCreateWithoutMoodsInput
+  connect: UserWhereUniqueInput
   update: UserUpdateWithoutMoodsDataInput
   upsert: UserUpsertWithoutMoodsInput
-  connect: UserWhereUniqueInput
 }
 
 input UserUpdateOneRequiredWithoutPostsInput {
   create: UserCreateWithoutPostsInput
+  connect: UserWhereUniqueInput
   update: UserUpdateWithoutPostsDataInput
   upsert: UserUpsertWithoutPostsInput
-  connect: UserWhereUniqueInput
 }
 
 input UserUpdateWithoutHabitsDataInput {
   email: String
   password: String
   name: String
-  posts: PostUpdateManyWithoutAuthorInput
   pushToken: String
-  moods: MoodUpdateManyWithoutOwnerInput
   isPro: Boolean
+  posts: PostUpdateManyWithoutAuthorInput
+  moods: MoodUpdateManyWithoutOwnerInput
 }
 
 input UserUpdateWithoutMoodsDataInput {
   email: String
   password: String
   name: String
-  posts: PostUpdateManyWithoutAuthorInput
   pushToken: String
-  habits: HabitUpdateManyWithoutOwnerInput
   isPro: Boolean
+  posts: PostUpdateManyWithoutAuthorInput
+  habits: HabitUpdateManyWithoutOwnerInput
 }
 
 input UserUpdateWithoutPostsDataInput {
@@ -1224,9 +1980,9 @@ input UserUpdateWithoutPostsDataInput {
   password: String
   name: String
   pushToken: String
+  isPro: Boolean
   habits: HabitUpdateManyWithoutOwnerInput
   moods: MoodUpdateManyWithoutOwnerInput
-  isPro: Boolean
 }
 
 input UserUpsertWithoutHabitsInput {
@@ -1245,90 +2001,227 @@ input UserUpsertWithoutPostsInput {
 }
 
 input UserWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserWhereInput!]
   id: ID
+
+  """All values that are not equal to given value."""
   id_not: ID
+
+  """All values that are contained in given list."""
   id_in: [ID!]
+
+  """All values that are not contained in given list."""
   id_not_in: [ID!]
+
+  """All values less than the given value."""
   id_lt: ID
+
+  """All values less than or equal the given value."""
   id_lte: ID
+
+  """All values greater than the given value."""
   id_gt: ID
+
+  """All values greater than or equal the given value."""
   id_gte: ID
+
+  """All values containing the given string."""
   id_contains: ID
+
+  """All values not containing the given string."""
   id_not_contains: ID
+
+  """All values starting with the given string."""
   id_starts_with: ID
+
+  """All values not starting with the given string."""
   id_not_starts_with: ID
+
+  """All values ending with the given string."""
   id_ends_with: ID
+
+  """All values not ending with the given string."""
   id_not_ends_with: ID
   email: String
+
+  """All values that are not equal to given value."""
   email_not: String
+
+  """All values that are contained in given list."""
   email_in: [String!]
+
+  """All values that are not contained in given list."""
   email_not_in: [String!]
+
+  """All values less than the given value."""
   email_lt: String
+
+  """All values less than or equal the given value."""
   email_lte: String
+
+  """All values greater than the given value."""
   email_gt: String
+
+  """All values greater than or equal the given value."""
   email_gte: String
+
+  """All values containing the given string."""
   email_contains: String
+
+  """All values not containing the given string."""
   email_not_contains: String
+
+  """All values starting with the given string."""
   email_starts_with: String
+
+  """All values not starting with the given string."""
   email_not_starts_with: String
+
+  """All values ending with the given string."""
   email_ends_with: String
+
+  """All values not ending with the given string."""
   email_not_ends_with: String
   password: String
+
+  """All values that are not equal to given value."""
   password_not: String
+
+  """All values that are contained in given list."""
   password_in: [String!]
+
+  """All values that are not contained in given list."""
   password_not_in: [String!]
+
+  """All values less than the given value."""
   password_lt: String
+
+  """All values less than or equal the given value."""
   password_lte: String
+
+  """All values greater than the given value."""
   password_gt: String
+
+  """All values greater than or equal the given value."""
   password_gte: String
+
+  """All values containing the given string."""
   password_contains: String
+
+  """All values not containing the given string."""
   password_not_contains: String
+
+  """All values starting with the given string."""
   password_starts_with: String
+
+  """All values not starting with the given string."""
   password_not_starts_with: String
+
+  """All values ending with the given string."""
   password_ends_with: String
+
+  """All values not ending with the given string."""
   password_not_ends_with: String
   name: String
+
+  """All values that are not equal to given value."""
   name_not: String
+
+  """All values that are contained in given list."""
   name_in: [String!]
+
+  """All values that are not contained in given list."""
   name_not_in: [String!]
+
+  """All values less than the given value."""
   name_lt: String
+
+  """All values less than or equal the given value."""
   name_lte: String
+
+  """All values greater than the given value."""
   name_gt: String
+
+  """All values greater than or equal the given value."""
   name_gte: String
+
+  """All values containing the given string."""
   name_contains: String
+
+  """All values not containing the given string."""
   name_not_contains: String
+
+  """All values starting with the given string."""
   name_starts_with: String
+
+  """All values not starting with the given string."""
   name_not_starts_with: String
+
+  """All values ending with the given string."""
   name_ends_with: String
+
+  """All values not ending with the given string."""
   name_not_ends_with: String
+  pushToken: String
+
+  """All values that are not equal to given value."""
+  pushToken_not: String
+
+  """All values that are contained in given list."""
+  pushToken_in: [String!]
+
+  """All values that are not contained in given list."""
+  pushToken_not_in: [String!]
+
+  """All values less than the given value."""
+  pushToken_lt: String
+
+  """All values less than or equal the given value."""
+  pushToken_lte: String
+
+  """All values greater than the given value."""
+  pushToken_gt: String
+
+  """All values greater than or equal the given value."""
+  pushToken_gte: String
+
+  """All values containing the given string."""
+  pushToken_contains: String
+
+  """All values not containing the given string."""
+  pushToken_not_contains: String
+
+  """All values starting with the given string."""
+  pushToken_starts_with: String
+
+  """All values not starting with the given string."""
+  pushToken_not_starts_with: String
+
+  """All values ending with the given string."""
+  pushToken_ends_with: String
+
+  """All values not ending with the given string."""
+  pushToken_not_ends_with: String
+  isPro: Boolean
+
+  """All values that are not equal to given value."""
+  isPro_not: Boolean
   posts_every: PostWhereInput
   posts_some: PostWhereInput
   posts_none: PostWhereInput
-  pushToken: String
-  pushToken_not: String
-  pushToken_in: [String!]
-  pushToken_not_in: [String!]
-  pushToken_lt: String
-  pushToken_lte: String
-  pushToken_gt: String
-  pushToken_gte: String
-  pushToken_contains: String
-  pushToken_not_contains: String
-  pushToken_starts_with: String
-  pushToken_not_starts_with: String
-  pushToken_ends_with: String
-  pushToken_not_ends_with: String
   habits_every: HabitWhereInput
   habits_some: HabitWhereInput
   habits_none: HabitWhereInput
   moods_every: MoodWhereInput
   moods_some: MoodWhereInput
   moods_none: MoodWhereInput
-  isPro: Boolean
-  isPro_not: Boolean
-  AND: [UserWhereInput!]
-  OR: [UserWhereInput!]
-  NOT: [UserWhereInput!]
 }
 
 input UserWhereUniqueInput {
