@@ -11,8 +11,12 @@ if [ $DEBUG = 1 ]; then
 
   echo "Running in debug mode"
 
-  yarn deployAndRun
-
+  if [ $RESET = 1 ]; then
+    echo "Resetting prisma db"
+    yarn reset && yarn start
+  else
+    yarn start
+  if
 else
 
   echo "Running in production mode"

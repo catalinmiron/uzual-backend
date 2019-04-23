@@ -1,12 +1,12 @@
 {
   "name": "uzual",
   "scripts": {
-    "deployAndRun": "prisma deploy && npm start",
     "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
     "debug": "dotenv -- nodemon -e ts,graphql -x ts-node --inspect src/index.ts",
     "prod": "npm run build && dotenv -- nodemon --exec 'node dist/index.js'",
     "build": "rimraf dist && tsc",
-    "generate": "graphqlgen"
+    "generate": "graphqlgen",
+    "reset": "prisma reset --force"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
