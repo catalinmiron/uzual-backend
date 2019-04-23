@@ -9,9 +9,9 @@ type Query {
 type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
-  setMood(id: ID, type: Moods!, date: String!): Mood!
+  setMood(id: ID, type: Moods!, date: Int!): Mood!
   addHabit(title: String!, description: String): Habit!
-  addDailyHabit(habitId: ID!, done: Boolean, date: String!): DayHabit!
+  addDailyHabit(habitId: ID!, done: Boolean, date: Int!): DayHabit!
 }
 
 type Subscription {
