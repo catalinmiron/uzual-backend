@@ -16,7 +16,8 @@ if [ $DEBUG = 1 ]; then
     yarn reset && yarn start
   else
     yarn start
-  if
+  fi
+
 else
 
   echo "Running in production mode"
