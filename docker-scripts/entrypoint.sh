@@ -5,7 +5,7 @@
 
 if [ $RESET = 1 ]; then
   echo "Resetting prisma db"
-  yarn prisma seed --force
+  yarn prisma seed --reset
   # yarn prisma deploy
 fi
 
