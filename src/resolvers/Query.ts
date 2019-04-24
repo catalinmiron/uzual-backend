@@ -1,40 +1,49 @@
-import { getUserId, Context } from '../utils'
-import { FragmentableArray } from '../generated/prisma-client';
-import { QueryResolvers } from '../generated/graphqlgen';
-import { Habit } from '../types';
+import { getUserId } from '../utils'
+import { stringArg, idArg, queryType } from 'nexus'
 
-export const Query: QueryResolvers.Type = {
-  ...QueryResolvers.defaultResolvers,
-  // feed(parent, args, ctx: Context) {
-  //   return ctx.prisma.posts({ where: { published: true } })
-  // },
-  // drafts(parent, args, ctx: Context) {
-  //   const id = getUserId(ctx)
+export const Query = queryType({
+  definition(t) {
+    t.field('me', {
+      type: 'User',
+      resolve: (parent, args, ctx) => {
+        const userId = getUserId(ctx)
+        return ctx.prisma.user({ id: userId })
+      },
+    })
 
-  //   const where = {
-  //     published: false,
-  //     author: {
-  //       id,
-  //     },
-  //   }
+    t.list.field('feed', {
+      type: 'Post',
+      resolve: (parent, args, ctx) => {
+        return ctx.prisma.posts({
+          where: { published: true },
+        })
+      },
+    })
 
-  //   return ctx.prisma.posts({ where })
-  // },
+    t.list.field('filterPosts', {
+      type: 'Post',
+      args: {
+        searchString: stringArg({ nullable: true }),
+      },
+      resolve: (parent, { searchString }, ctx) => {
+        return ctx.prisma.posts({
+          where: {
+            OR: [
+              { title_contains: searchString },
+              { content_contains: searchString },
+            ],
+          },
+        })
+      },
+    })
 
-  // post(parent, { id }, ctx: Context) {
-  //   return ctx.prisma.post({ id })
-  // },
-
-  me(parent, args, ctx: Context) {
-    const id = getUserId(ctx)
-    return ctx.prisma.user({ id })
+    t.field('post', {
+      type: 'Post',
+      nullable: true,
+      args: { id: idArg() },
+      resolve: (parent, { id }, ctx) => {
+        return ctx.prisma.post({ id })
+      },
+    })
   },
-  mood(parent, args, ctx: Context) {
-    const id = getUserId(ctx)
-    return ctx.prisma.moods({ where:{owner:{id }} });
-  },
-  habits(parent, args, ctx: Context) {
-    const id = getUserId(ctx)
-    return ctx.prisma.habits({ where:{owner:{id }} }) as FragmentableArray<Habit>;
-  },
-}
+})

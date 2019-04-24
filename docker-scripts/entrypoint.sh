@@ -5,12 +5,9 @@
 
 if [ $RESET = 1 ]; then
   echo "Resetting prisma db"
-  yarn prisma seed --reset
+  prisma seed --reset
   # yarn prisma deploy
 fi
-
-graphql get-schema --project prisma
-yarn generate
 
 if [ $DEBUG = 1 ]; then
 
