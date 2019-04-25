@@ -1,10 +1,31 @@
-import { stringArg, idArg, mutationType } from 'nexus'
-import { hash, compare } from 'bcryptjs'
+import { stringArg, idArg, mutationType, scalarType, enumType } from 'nexus'
+import * as bcrypt from 'bcryptjs'
 import { APP_SECRET, getUserId } from '../utils'
 import { sign } from 'jsonwebtoken'
+import { NexusTypes, arg } from 'nexus/dist/core';
+import { MoodTypes } from '../generated/prisma-client';
+
 
 export const Mutation = mutationType({
   definition(t) {
+    t.field('addMood', {
+      type: 'Mood',
+      args:{
+        date: stringArg({}),
+        type: arg({
+          type: 'MoodTypes',
+          nullable: false
+        })
+      },
+      resolve: (parent, { date, type }, ctx) => {
+        const userId = getUserId(ctx);
+        return ctx.prisma.createMood({
+          date,
+          type,
+          owner: { connect: { id: userId } }
+        })
+      },
+    })
     t.field('signup', {
       type: 'AuthPayload',
       args: {
@@ -13,7 +34,7 @@ export const Mutation = mutationType({
         password: stringArg(),
       },
       resolve: async (parent, { name, email, password }, ctx) => {
-        const hashedPassword = await hash(password, 10)
+        const hashedPassword = await bcrypt.hash(password, 10)
         const user = await ctx.prisma.createUser({
           name,
           email,
@@ -37,7 +58,7 @@ export const Mutation = mutationType({
         if (!user) {
           throw new Error(`No user found for email: ${email}`)
         }
-        const passwordValid = await compare(password, user.password)
+        const passwordValid = await bcrypt.compare(password, user.password)
         if (!passwordValid) {
           throw new Error('Invalid password')
         }

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Wait until prisma is avaliable, and download schemas
-./docker-scripts/wait-for-it.sh prisma:4466 -- prisma deploy
+./docker-scripts/wait-for-it.sh $PRISMA_ENDPOINT:$PRISMA_PORT -- prisma deploy
 
 if [ $RESET = 1 ]; then
   echo "Resetting prisma db"

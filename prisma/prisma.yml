@@ -18,6 +18,8 @@ hooks:
 # Seeds initial data into the database by running a script.
 seed:
   run: yarn ts-node ./prisma/seed.ts
+# seed:
+#   import: seed.graphql
 
 # If specified, the `secret` must be used to generate a JWT which is attached
 # to the `Authorization` header of HTTP requests made against the Prisma API.

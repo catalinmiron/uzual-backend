@@ -275,7 +275,7 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type Moods =
+export type MoodTypes =
   | "Dizzy"
   | "Frown"
   | "FrownOpen"
@@ -357,7 +357,7 @@ export type UserOrderByInput =
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export interface MoodUpdateWithoutOwnerDataInput {
-  type?: Moods;
+  type?: MoodTypes;
   date?: DateTimeInput;
 }
 
@@ -366,7 +366,7 @@ export type DayHabitWhereUniqueInput = AtLeastOne<{
 }>;
 
 export interface MoodUpdateManyDataInput {
-  type?: Moods;
+  type?: MoodTypes;
   date?: DateTimeInput;
 }
 
@@ -815,7 +815,7 @@ export interface HabitUpsertWithWhereUniqueWithoutOwnerInput {
 }
 
 export interface MoodUpdateManyMutationInput {
-  type?: Moods;
+  type?: MoodTypes;
   date?: DateTimeInput;
 }
 
@@ -845,10 +845,10 @@ export interface MoodScalarWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  type?: Moods;
-  type_not?: Moods;
-  type_in?: Moods[] | Moods;
-  type_not_in?: Moods[] | Moods;
+  type?: MoodTypes;
+  type_not?: MoodTypes;
+  type_in?: MoodTypes[] | MoodTypes;
+  type_not_in?: MoodTypes[] | MoodTypes;
   date?: DateTimeInput;
   date_not?: DateTimeInput;
   date_in?: DateTimeInput[] | DateTimeInput;
@@ -951,10 +951,10 @@ export interface MoodWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  type?: Moods;
-  type_not?: Moods;
-  type_in?: Moods[] | Moods;
-  type_not_in?: Moods[] | Moods;
+  type?: MoodTypes;
+  type_not?: MoodTypes;
+  type_in?: MoodTypes[] | MoodTypes;
+  type_not_in?: MoodTypes[] | MoodTypes;
   date?: DateTimeInput;
   date_not?: DateTimeInput;
   date_in?: DateTimeInput[] | DateTimeInput;
@@ -1156,7 +1156,7 @@ export interface DayHabitUpsertWithWhereUniqueWithoutHabitInput {
 }
 
 export interface MoodCreateWithoutOwnerInput {
-  type: Moods;
+  type: MoodTypes;
   date: DateTimeInput;
 }
 
@@ -1276,7 +1276,7 @@ export interface HabitScalarWhereInput {
 }
 
 export interface MoodCreateInput {
-  type: Moods;
+  type: MoodTypes;
   date: DateTimeInput;
   owner: UserCreateOneWithoutMoodsInput;
 }
@@ -1304,7 +1304,7 @@ export interface DayHabitSubscriptionWhereInput {
 }
 
 export interface MoodUpdateInput {
-  type?: Moods;
+  type?: MoodTypes;
   date?: DateTimeInput;
   owner?: UserUpdateOneRequiredWithoutMoodsInput;
 }
@@ -1964,7 +1964,7 @@ export interface AggregateMoodSubscription
 
 export interface MoodPreviousValues {
   id: ID_Output;
-  type: Moods;
+  type: MoodTypes;
   date: DateTimeOutput;
 }
 
@@ -1972,7 +1972,7 @@ export interface MoodPreviousValuesPromise
   extends Promise<MoodPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  type: () => Promise<Moods>;
+  type: () => Promise<MoodTypes>;
   date: () => Promise<DateTimeOutput>;
 }
 
@@ -1980,7 +1980,7 @@ export interface MoodPreviousValuesSubscription
   extends Promise<AsyncIterator<MoodPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  type: () => Promise<AsyncIterator<Moods>>;
+  type: () => Promise<AsyncIterator<MoodTypes>>;
   date: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
@@ -2011,13 +2011,13 @@ export interface MoodSubscriptionPayloadSubscription
 
 export interface Mood {
   id: ID_Output;
-  type: Moods;
+  type: MoodTypes;
   date: DateTimeOutput;
 }
 
 export interface MoodPromise extends Promise<Mood>, Fragmentable {
   id: () => Promise<ID_Output>;
-  type: () => Promise<Moods>;
+  type: () => Promise<MoodTypes>;
   date: () => Promise<DateTimeOutput>;
   owner: <T = UserPromise>() => T;
 }
@@ -2026,7 +2026,7 @@ export interface MoodSubscription
   extends Promise<AsyncIterator<Mood>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  type: () => Promise<AsyncIterator<Moods>>;
+  type: () => Promise<AsyncIterator<MoodTypes>>;
   date: () => Promise<AsyncIterator<DateTimeOutput>>;
   owner: <T = UserSubscription>() => T;
 }
@@ -2201,7 +2201,7 @@ export const models: Model[] = [
     embedded: false
   },
   {
-    name: "Moods",
+    name: "MoodTypes",
     embedded: false
   }
 ];
