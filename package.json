@@ -3,8 +3,10 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node-dev --no-notify --respawn --transpileOnly ./src",
-    "prod": "npm run build && NODE_ENV=production node dist/index.js",
-    "build": "rimraf dist && tsc"
+    "prod": "ts-node src/index.ts",
+    "build": "npm run clean && npm run tsc ",
+    "tsc": "tsc",
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

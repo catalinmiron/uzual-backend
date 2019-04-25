@@ -1,30 +1,78 @@
-import { stringArg, idArg, mutationType, scalarType, enumType } from 'nexus'
+import { booleanArg, arg, stringArg, idArg, mutationType } from 'nexus'
 import * as bcrypt from 'bcryptjs'
 import { APP_SECRET, getUserId } from '../utils'
 import { sign } from 'jsonwebtoken'
-import { NexusTypes, arg } from 'nexus/dist/core';
-import { MoodTypes } from '../generated/prisma-client';
 
 
 export const Mutation = mutationType({
   definition(t) {
-    t.field('addMood', {
+    t.field('setMood', {
       type: 'Mood',
       args:{
-        date: stringArg({}),
+        date: stringArg(),
         type: arg({
           type: 'MoodTypes',
-          nullable: false
+          required: true
+        }),
+        id: idArg({default: "",nullable: true})
+      },
+      resolve: (parent, { id, date, type }, ctx) => {
+        const userId = getUserId(ctx);
+        return ctx.prisma.upsertMood({
+          where: {
+            id
+          },
+          create: {
+            date,
+            type,
+            owner: {
+              connect: { id: userId },
+            },
+          },
+          update: {
+            type
+          }
         })
       },
-      resolve: (parent, { date, type }, ctx) => {
+    })
+    t.field('addHabit', {
+      type: 'Habit',
+      args: {
+        title: stringArg({required: true}),
+        description: stringArg({required: false, default: ""}),
+        starred: booleanArg({default: false, nullable: true})
+      },
+      resolve: (parent, { title, description, starred }, ctx) => {
         const userId = getUserId(ctx);
-        return ctx.prisma.createMood({
-          date,
-          type,
+        return ctx.prisma.createHabit({
+          description: description || '',
+          starred: !!starred,
+          title,
           owner: { connect: { id: userId } }
         })
       },
+    })
+    t.field('setDailyHabit', {
+      type: 'DayHabit',
+      args: {
+        date: stringArg(),
+        done: booleanArg({default: false, nullable: true}),
+        id: idArg({default: "", required: false})
+      },
+      resolve: (parent, { id, date, done }, ctx) => {
+        const userId = getUserId(ctx);
+        return ctx.prisma.upsertDayHabit({
+          where: {id},
+          create: {
+            date,
+            done,
+            habit: {connect:{id}}
+          },
+          update:{
+            done
+          }
+        })
+      }
     })
     t.field('signup', {
       type: 'AuthPayload',

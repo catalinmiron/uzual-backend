@@ -7,9 +7,10 @@ import * as allTypes from './resolvers'
 import datamodelInfo from './generated/nexus-prisma'
 import {config} from "dotenv"
 
-const p = process.env.NODE_ENV === 'production' ? '../.env.production' : '../.env';
+const isProd = process.env.NODE_ENV === 'production';
+const p = isProd ? '../.env.production' : '../.env';
 config({ path: path.resolve(__dirname, p) })
-
+console.log(process.env.NODE_ENV)
 const schema = makePrismaSchema({
   // Provide all the GraphQL types we've implemented
   types: allTypes,
@@ -23,7 +24,7 @@ const schema = makePrismaSchema({
   // Specify where Nexus should put the generated files
   outputs: {
     schema: path.join(__dirname, './generated/schema.graphql'),
-    typegen: path.join(__dirname, './generated/nexus.ts'),
+    typegen: path.join(__dirname, './generated/nexus'),
   },
 
   // Configure nullability of input arguments: All arguments are non-nullable by default
