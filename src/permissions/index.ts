@@ -16,12 +16,12 @@ const rules = {
 export const permissions = shield({
   Query: {
     me: rules.isAuthenticatedUser,
-    filterPosts: rules.isAuthenticatedUser,
-    post: rules.isAuthenticatedUser,
+    habits: rules.isAuthenticatedUser,
+    moods: rules.isAuthenticatedUser
   },
   Mutation: {
-    createDraft: rules.isAuthenticatedUser,
-    deletePost: rules.isPostOwner,
-    publish: rules.isPostOwner,
+    setMood: rules.isAuthenticatedUser,
+    createHabit: rules.isAuthenticatedUser,
+    setDailyHabit: rules.isAuthenticatedUser
   },
 })

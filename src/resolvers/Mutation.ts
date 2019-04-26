@@ -3,7 +3,6 @@ import * as bcrypt from 'bcryptjs'
 import { APP_SECRET, getUserId } from '../utils'
 import { sign } from 'jsonwebtoken'
 
-
 export const Mutation = mutationType({
   definition(t) {
     t.field('setMood', {
@@ -35,7 +34,7 @@ export const Mutation = mutationType({
         })
       },
     })
-    t.field('addHabit', {
+    t.field('createHabit', {
       type: 'Habit',
       args: {
         title: stringArg({required: true}),
@@ -114,43 +113,6 @@ export const Mutation = mutationType({
           token: sign({ userId: user.id }, APP_SECRET),
           user,
         }
-      },
-    })
-
-    t.field('createDraft', {
-      type: 'Post',
-      args: {
-        title: stringArg(),
-        content: stringArg({ nullable: true }),
-      },
-      resolve: (parent, { title, content }, ctx) => {
-        const userId = getUserId(ctx)
-        return ctx.prisma.createPost({
-          title,
-          content,
-          author: { connect: { id: userId } },
-        })
-      },
-    })
-
-    t.field('deletePost', {
-      type: 'Post',
-      nullable: true,
-      args: { id: idArg() },
-      resolve: (parent, { id }, ctx) => {
-        return ctx.prisma.deletePost({ id })
-      },
-    })
-
-    t.field('publish', {
-      type: 'Post',
-      nullable: true,
-      args: { id: idArg() },
-      resolve: (parent, { id }, ctx) => {
-        return ctx.prisma.updatePost({
-          where: { id },
-          data: { published: true },
-        })
       },
     })
   },
