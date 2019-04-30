@@ -6,11 +6,13 @@ const rules = {
     const userId = getUserId(context)
     return Boolean(userId)
   }),
-  isPostOwner: rule()(async (parent, { id }, context) => {
-    const userId = getUserId(context)
-    const author = await context.prisma.post({ id }).author()
-    return userId === author.id
-  }),
+  // isPostOwner: rule()(async (parent, { id }, context) => {
+  //   const userId = getUserId(context)
+  //   const author = await context.prisma.habits({
+  //     where: {owner:{id: userId}}
+  //   }).author()
+  //   return userId === author.id
+  // }),
 }
 
 export const permissions = shield({

@@ -7,5 +7,5 @@ export const resolvers = {
   Query,
   User,
   Mutation,
-  AuthPayload,
+  AuthPayload
 }

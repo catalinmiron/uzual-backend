@@ -10,10 +10,12 @@ export const User = prismaObjectType({
       'isPro',
       'pushToken',
       {
-        name: 'habits'
+        name: 'habits',
+        args: ['first', 'orderBy']
       },
       {
-        name: 'moods'
+        name: 'moods',
+        args: ['first', 'orderBy']
       }
     ])
   },
