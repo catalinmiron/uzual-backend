@@ -16,9 +16,10 @@ export const Query = prismaObjectType({
       },
       resolve: (parent, args, ctx) => {
         const userId = getUserId(ctx);
+        const where = {...args.where, owner:{id: userId}}
         return ctx.prisma.moods({
           ...args,
-          where:{owner:{id: userId}}
+          where
         })
       }
     })
@@ -30,10 +31,11 @@ export const Query = prismaObjectType({
       },
       resolve: (parent, args, ctx) => {
         const userId = getUserId(ctx);
-        args.where = {owner:{id: userId}};
+        const where = {...args.where, owner:{id: userId}}
         return ctx.prisma.habits({
           ...args,
-          where: {owner:{id: userId}}});
+          where
+        });
       }
     })
     t.field('me', {
