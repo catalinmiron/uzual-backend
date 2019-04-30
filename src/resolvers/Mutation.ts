@@ -37,17 +37,26 @@ export const Mutation = mutationType({
     t.field('createHabit', {
       type: 'Habit',
       args: {
+        id: idArg({default: "", required: false}),
         title: stringArg({required: true}),
         description: stringArg({required: false, default: ""}),
         starred: booleanArg({default: false, nullable: true})
       },
-      resolve: (parent, { title, description, starred }, ctx) => {
+      resolve: (parent, { id, title, description, starred }, ctx) => {
         const userId = getUserId(ctx);
-        return ctx.prisma.createHabit({
-          description: description || '',
-          starred: !!starred,
-          title,
-          owner: { connect: { id: userId } }
+        return ctx.prisma.upsertHabit({
+          where: {id},
+          create: {
+            description: description || '',
+            starred: !!starred,
+            title,
+            owner: { connect: { id: userId } }
+          },
+          update: {
+            ...(description && {description}),
+            ...(title && {title}),
+            starred: !!starred,
+          }
         })
       },
     })
