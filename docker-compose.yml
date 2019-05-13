@@ -1,31 +1,31 @@
 version: '3'
 services:
-  # app:
-  #   image: jc21/nginx-proxy-manager:2
-  #   restart: always
-  #   ports:
-  #     - 80:80
-  #     - 81:81
-  #     - 443:443
-  #   volumes:
-  #     - ./config.json:/app/config/production.json
-  #     - ./data:/data
-  #     - ./letsencrypt:/etc/letsencrypt
-  #   depends_on:
-  #     - db
-  #   environment:
-  #   # if you want pretty colors in your docker logs:
-  #   - FORCE_COLOR=1
-  # db:
-  #   image: jc21/mariadb-aria
-  #   restart: always
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: "09123hjasaSDQWjadASd___sadasm_-123a2saZXqdFAn2112312"
-  #     MYSQL_DATABASE: "nginxproxymanager"
-  #     MYSQL_USER: "nginxproxymanager"
-  #     MYSQL_PASSWORD: "09123hjasaSDQWjadASd___sadasm_-123a2saZXqdFAn2112312"
-  #   volumes:
-  #     - ./data/mysql:/var/lib/mysql
+  app:
+    image: jc21/nginx-proxy-manager:2
+    restart: always
+    ports:
+      - 80:80
+      - 81:81
+      - 443:443
+    volumes:
+      - ./config.json:/app/config/production.json
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    depends_on:
+      - db
+    environment:
+    # if you want pretty colors in your docker logs:
+    - FORCE_COLOR=1
+  db:
+    image: jc21/mariadb-aria
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "09123hjasaSDQWjadASd___sadasm_-123a2saZXqdFAn2112312"
+      MYSQL_DATABASE: "nginxproxymanager"
+      MYSQL_USER: "nginxproxymanager"
+      MYSQL_PASSWORD: "09123hjasaSDQWjadASd___sadasm_-123a2saZXqdFAn2112312"
+    volumes:
+      - ./data/mysql:/var/lib/mysql
   server:
     build: .
     image: graphql-server
