@@ -5,5 +5,4 @@ node_modules
 .idea
 .vscode
 *.log
-src/generated/
 data/

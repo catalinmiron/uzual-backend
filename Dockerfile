@@ -1,8 +1,8 @@
-FROM node:8-slim
+FROM node:10-slim
 
 WORKDIR /usr/src/app
 
-RUN yarn global add prisma@1.29 npx
+RUN yarn global add prisma@1.30 npx
 
 COPY package.json ./
 COPY yarn.lock ./
