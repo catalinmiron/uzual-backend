@@ -1,8 +1,8 @@
 dist
+.DS_Store
 package-lock.json
 node_modules
 .idea
 .vscode
 *.log
-src/generated/
 data/

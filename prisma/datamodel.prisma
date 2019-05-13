@@ -39,12 +39,12 @@ type DayHabit {
 
 type Mood {
   id: ID! @unique
-  type: Moods!
+  type: MoodTypes!
   date: DateTime!
   owner: User!
 }
 
-enum Moods {
+enum MoodTypes {
   Dizzy,
   Frown,
   FrownOpen,

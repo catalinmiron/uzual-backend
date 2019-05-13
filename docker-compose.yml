@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   app:
     image: jc21/nginx-proxy-manager:2
@@ -37,11 +37,12 @@ services:
       - prisma
     volumes:
       - ./:/usr/src/app
+      - /usr/src/app/node_modules
   prisma:
-    image: prismagraphql/prisma:1.29
+    image: prismagraphql/prisma:1.30
     restart: on-failure
     ports:
-    - '4466:4466'
+    - "4466:4466"
     environment:
       PRISMA_CONFIG: |
         port: 4466

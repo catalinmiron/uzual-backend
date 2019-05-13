@@ -1,12 +1,22 @@
-import { Context } from '../utils'
-import { UserResolvers } from '../generated/graphqlgen';
+import { prismaObjectType } from 'nexus-prisma'
 
-export const User: UserResolvers.Type = {
-  ...UserResolvers.defaultResolvers,
-  moods: ({ id }, args, ctx: Context) => {
-    return ctx.prisma.user({ id }).moods()
+export const User = prismaObjectType({
+  name: 'User',
+  definition(t) {
+    t.prismaFields([
+      'id',
+      'name',
+      'email',
+      'isPro',
+      'pushToken',
+      {
+        name: 'habits',
+        args: ['first', 'orderBy']
+      },
+      {
+        name: 'moods',
+        args: ['first', 'orderBy']
+      }
+    ])
   },
-  habits: ({ id }, args, ctx: Context) => {
-    return ctx.prisma.user({ id }).habits()
-  },
-}
+})
