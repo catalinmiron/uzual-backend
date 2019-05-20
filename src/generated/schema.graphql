@@ -204,7 +204,7 @@ input MoodWhereInput {
 type Mutation {
   createHabit(description: String = "", id: ID = "", starred: Boolean = false, title: String!): Habit
   login(email: String, password: String): AuthPayload
-  setDailyHabit(date: String, done: Boolean = false, id: ID = ""): DayHabit
+  setDailyHabit(date: String = "2019-05-20", habitId: ID): DayHabit
   setMood(date: String, id: ID = "", type: MoodTypes!): Mood
   signup(email: String, name: String, password: String): AuthPayload
 }
