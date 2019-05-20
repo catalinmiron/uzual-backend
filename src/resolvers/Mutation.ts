@@ -91,7 +91,6 @@ export const Mutation = mutationType({
 
         if (habit.habits.length === 0) {
           console.log('Create DayHabit');
-          // create the dayhabit
           return ctx.prisma.createDayHabit({
             date,
             done: true,
@@ -106,7 +105,6 @@ export const Mutation = mutationType({
               done: !habit.habits[0].done
             }
           });
-          // update the day habit
         }
       }
     });
