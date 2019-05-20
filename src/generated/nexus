@@ -409,8 +409,7 @@ export interface NexusGenArgTypes {
     }
     setDailyHabit: { // args
       date?: string | null; // String
-      done?: boolean | null; // Boolean
-      id?: string | null; // ID
+      habitId?: string | null; // ID
     }
     setMood: { // args
       date?: string | null; // String
