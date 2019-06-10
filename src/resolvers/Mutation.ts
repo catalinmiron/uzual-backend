@@ -9,30 +9,46 @@ export const Mutation = mutationType({
     t.field('setMood', {
       type: 'Mood',
       args: {
-        date: stringArg(),
+        date: stringArg({
+          default: new Date().toISOString().split('T')[0],
+          required: false
+        }),
         type: arg({
           type: 'MoodTypes',
           required: true
-        }),
-        id: idArg({ default: '', nullable: true })
+        })
       },
-      resolve: (parent, { id, date, type }, ctx) => {
+      resolve: async (parent, { date, type }, ctx: Context) => {
         const userId = getUserId(ctx);
-        return ctx.prisma.upsertMood({
+        const dayMood = await ctx.prisma.moods({
           where: {
-            id
-          },
-          create: {
-            date,
-            type,
+            date: date,
             owner: {
-              connect: { id: userId }
+              id: userId
             }
-          },
-          update: {
-            type
           }
         });
+        if (dayMood.length === 0) {
+          console.log('Create Mood');
+          return ctx.prisma.createMood({
+            owner: {
+              connect: {
+                id: userId
+              }
+            },
+            date,
+            type
+          });
+        } else {
+          console.log('Update Mood');
+          return ctx.prisma.updateMood({
+            where: { id: dayMood[0].id },
+            data: {
+              date,
+              type
+            }
+          });
+        }
       }
     });
     t.field('createHabit', {

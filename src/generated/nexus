@@ -413,7 +413,6 @@ export interface NexusGenArgTypes {
     }
     setMood: { // args
       date?: string | null; // String
-      id?: string | null; // ID
       type: NexusGenEnums['MoodTypes']; // MoodTypes!
     }
     signup: { // args
