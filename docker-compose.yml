@@ -29,6 +29,7 @@ services:
   server:
     build: .
     image: graphql-server
+    restart: on-failure
     env_file:
       - .env
     ports:
