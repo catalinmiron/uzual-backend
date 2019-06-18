@@ -59,7 +59,7 @@ export const Mutation = mutationType({
         description: stringArg({ required: false, default: '' }),
         starred: booleanArg({ default: false, nullable: true })
       },
-      resolve: (parent, { id, title, description, starred }, ctx) => {
+      resolve: (parent, { id, title, description, starred }, ctx: Context) => {
         const userId = getUserId(ctx);
         return ctx.prisma.upsertHabit({
           where: { id },
@@ -74,6 +74,24 @@ export const Mutation = mutationType({
             ...(title && { title }),
             starred: !!starred
           }
+        });
+      }
+    });
+    t.field('deleteHabit', {
+      type: 'Habit',
+      args: {
+        id: idArg()
+      },
+      resolve: async (parent, { id }, ctx: Context) => {
+        const userId = getUserId(ctx);
+        await ctx.prisma.deleteManyDayHabits({
+          habit: {
+            id
+          }
+        });
+        console.log('Delete Habit');
+        return ctx.prisma.deleteHabit({
+          id
         });
       }
     });

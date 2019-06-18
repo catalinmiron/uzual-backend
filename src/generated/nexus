@@ -363,6 +363,7 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     createHabit: NexusGenRootTypes['Habit'] | null; // Habit
+    deleteHabit: NexusGenRootTypes['Habit'] | null; // Habit
     login: NexusGenRootTypes['AuthPayload'] | null; // AuthPayload
     setDailyHabit: NexusGenRootTypes['DayHabit'] | null; // DayHabit
     setMood: NexusGenRootTypes['Mood'] | null; // Mood
@@ -402,6 +403,9 @@ export interface NexusGenArgTypes {
       id?: string | null; // ID
       starred?: boolean | null; // Boolean
       title: string; // String!
+    }
+    deleteHabit: { // args
+      id?: string | null; // ID
     }
     login: { // args
       email?: string | null; // String
