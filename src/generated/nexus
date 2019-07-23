@@ -367,6 +367,7 @@ export interface NexusGenFieldTypes {
     login: NexusGenRootTypes['AuthPayload'] | null; // AuthPayload
     setDailyHabit: NexusGenRootTypes['DayHabit'] | null; // DayHabit
     setMood: NexusGenRootTypes['Mood'] | null; // Mood
+    setPushToken: NexusGenRootTypes['User'] | null; // User
     signup: NexusGenRootTypes['AuthPayload'] | null; // AuthPayload
   }
   Query: { // field return type
@@ -418,6 +419,9 @@ export interface NexusGenArgTypes {
     setMood: { // args
       date?: string | null; // String
       type: NexusGenEnums['MoodTypes']; // MoodTypes!
+    }
+    setPushToken: { // args
+      pushToken?: string | null; // String
     }
     signup: { // args
       email?: string | null; // String

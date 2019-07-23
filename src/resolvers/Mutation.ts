@@ -6,6 +6,23 @@ import { Context } from '../types';
 
 export const Mutation = mutationType({
   definition(t) {
+    t.field('setPushToken', {
+      type: 'User',
+      args: {
+        pushToken: stringArg()
+      },
+      resolve: async (parent, { pushToken }, ctx: Context) => {
+        const userId = getUserId(ctx);
+        return ctx.prisma.updateUser({
+          where: {
+            id: userId
+          },
+          data: {
+            pushToken
+          }
+        });
+      }
+    });
     t.field('setMood', {
       type: 'Mood',
       args: {

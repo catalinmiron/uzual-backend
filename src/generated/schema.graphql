@@ -205,8 +205,9 @@ type Mutation {
   createHabit(description: String = "", id: ID = "", starred: Boolean = false, title: String!): Habit
   deleteHabit(id: ID): Habit
   login(email: String, password: String): AuthPayload
-  setDailyHabit(date: String = "2019-06-18", habitId: ID): DayHabit
-  setMood(date: String = "2019-06-18", type: MoodTypes!): Mood
+  setDailyHabit(date: String = "2019-07-23", habitId: ID): DayHabit
+  setMood(date: String = "2019-07-23", type: MoodTypes!): Mood
+  setPushToken(pushToken: String): User
   signup(email: String, name: String, password: String): AuthPayload
 }
 
